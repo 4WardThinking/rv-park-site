@@ -8,6 +8,7 @@ import lit from "@astrojs/lit";
 export default defineConfig({
   site: 'https://4WardThinking.github.io',
   base: "/rv-park-site/",
+  trailingSlash: "always",
   sitemap: true,
   integrations: [sitemap(), mdx(), lit(), icon()], // Add renderers to the config
 });
