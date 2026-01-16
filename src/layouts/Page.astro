@@ -30,9 +30,9 @@ const navWithBase = nav.map((item) => {
 
 <Layout seo={seo}>
   <Header rightMenu navData={navWithBase} slot="header">
-    <span slot="logo">
+    <a slot="logo" href={import.meta.env.BASE_URL} aria-label="Home">
       <Logo />
-    </span>
+	</a>
 
     <Button
       slot="action-item"
