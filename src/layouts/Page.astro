@@ -1,0 +1,40 @@
+---
+import { Header, Button, Footer } from '@components/odyssey-theme';
+import Layout from './Base.astro';
+import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
+import Logo from '../components/Logo.astro';
+import settings from '../config/settings';
+import { footerLists, footerSocials } from '../config/footer';
+
+
+export interface Props {
+	seo?: BaseHeadProps;
+}
+
+import { nav } from '../config/nav.js';
+
+const { seo } = Astro.props as Props;
+---
+
+<Layout seo={seo}>
+	<Header rightMenu navData={nav} slot="header">
+		<span slot="logo">
+			<Logo />
+		</span>
+		<Button slot="action-item" href="https://www.roverpass.com/c/fourwardcast-flippin-ar/booking/?d=5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5">Reserve Now</Button>
+	</Header>
+	<div id="page">
+		<slot />
+	</div>
+	<Footer
+		slot="footer"
+		background="var(--theme-surface-1)"
+		color="var(--theme-on-surface-1)"
+		footerLists={footerLists}
+    footerSocials={footerSocials}
+		copyrightName={settings.name}
+    showPlug={settings.showPlug}
+	>
+		<Logo slot="logo" />
+	</Footer>
+</Layout>

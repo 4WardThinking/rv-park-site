@@ -1,0 +1,104 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Container, Button } from '@components/odyssey-theme';
+import settings from '../../../config/settings.js';
+import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
+import ReserveDatePicker from "../../ReserveDatePicker.astro";
+import "litepicker/dist/css/litepicker.css";
+---
+
+<Container>
+	<section class="hero-section__section">
+		<div class="hero-section__text">
+				<h1>Welcome to FourWardCast Family Campground and Cabins</h1>
+				<p>
+					A veteran owned, and family operated outdoor camping business located at Bull Shoals Lake in the Ozark Mountains of Arkansas.
+				</p>
+				<ReserveDatePicker parkSlug="fourwardcast-flippin-ar"
+				d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5" buttonText="Reserve Now">
+				</div>
+        {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
+		</div>
+		<div class="hero-media">
+			<video
+				src="/assets/images/videos/rotatingcampground.mp4"
+				class="hero-media__video"
+				autoplay
+				loop
+				muted
+				playsinline
+			></video>
+				<div class="hero-media__caption-wrap">
+				<Button class="hero-media__caption" href="https://maps.app.goo.gl/smvvWWbrDQep9JmX6">
+					76 Marion County 8119, Flippin, Arkansas 72634
+				</Button>
+				</div>
+			</div>
+	</section>
+</Container>
+
+<style>
+	.hero-section__section {
+		margin: var(--section-margin) auto;
+		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 1rem;
+	}
+	.hero-section__text {
+		justify-self: center;
+		max-width: 25rem;
+	}
+	.hero-btns__container {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.hero-btns__container {
+		margin-right: 1rem;
+	}
+	.hero-section__image {
+		display: flex;
+	}
+	.hero-section__image img {
+		width: 100%;
+		height: 100%;
+		max-height: 80vh;
+		object-fit: cover;
+		border-radius: var(--theme-shape-radius);
+	}
+	.hero-media {
+	width: 100%;
+	max-width: 720px;          /* adjust to taste */
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+	.hero-media__video {
+	width: 100%;
+	height: min(60vh, 520px);  /* max height cap */
+	border-radius: 24px;       /* match theme */
+	object-fit: cover;         /* crops to fill box nicely */
+	display: block;
+	}
+
+	.hero-media__caption-wrap {
+	display: flex;
+	justify-content: center;
+	margin-top: 14px; /* space under video */
+	text-align: center;
+	}
+
+	.hero-media__caption {
+	display: inline-flex;
+	justify-content: center;
+	text-align: center;
+	max-width: 100%;
+	}
+	@media (max-width: 768px) {
+		.hero-section__section {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

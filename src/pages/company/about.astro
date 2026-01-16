@@ -1,0 +1,51 @@
+---
+import { TextSection } from '@components/odyssey-theme';
+import Layout from '../../layouts/Page.astro';
+import HeroSection from '../../components/sections/heros/HeroSection.astro';
+
+const seo = {
+	title: 'About | FourWardCast',
+	description: 'About Page for FourWardCast Family Campground and Cabins at Bull Shoals Lake',
+};
+---
+
+<Layout {seo}>
+	<HeroSection>
+		<div slot="text-container">
+			<h1>About FourWardCast</h1>
+			<p>
+				FourWardCast is a veteran-owned, family-run campground on 
+        Bull Shoals Lake in the Ozark Mountains of Arkansas.
+			</p>
+		</div>
+    <picture slot="image-container">
+      <img
+        src="/assets/images/home/familyphoto.png"
+        alt="FourWardCast Family Photo"
+        id="home-hero-image"
+      />
+    </picture>
+	</HeroSection>
+  <TextSection narrow>
+    <p>
+      Our name tells our story: Ward and his three sons—the “FourWard”—combined with the
+      mother’s maiden name, Castaneda (“Cast”). Together, FourWardCast nods to the fishing
+      roots of this place and the traditions we’re building as a family—cast after cast, season
+      after season.
+    </p>
+    <p>
+      Set on 31 acres near Flippin, Arkansas, just minutes from the White River, FourWardCast is
+      made for families, anglers, and anyone who needs a quiet reset outdoors.
+    </p>
+    
+    <p>
+      We offer RV and tent sites, basic and deluxe cabins, and vintage camper rentals, along with the comforts
+      that make camping easy: a camp store, outdoor pool, pavilion with a full kitchen and
+      dining area, game/movie room, shower house, bathrooms, laundry, and more
+    </p>
+    <p>
+      From lake days and river floats to early-morning trout fishing, 
+      we’re here to help you make the kind of memories that bring you back.
+    </p>
+  </TextSection>
+</Layout>

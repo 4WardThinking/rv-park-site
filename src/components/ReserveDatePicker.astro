@@ -1,0 +1,153 @@
+---
+const {
+  d = "5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5",
+  parkSlug = "fourwardcast-flippin-ar",
+  buttonText = "Search Now",
+} = Astro.props;
+
+const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
+---
+
+<div class="reserve-picker" data-base-url={baseUrl} data-d={d}>
+  <input
+    id="rp-dates"
+    class="reserve-input"
+    type="text"
+    placeholder="Select dates"
+    autocomplete="off"
+    inputmode="none"
+  />
+  <button id="rp-go" class="reserve-button" type="button">
+    {buttonText}
+  </button>
+</div>
+
+<script is:inline>
+  // Format Date -> YYYY-MM-DD
+  function toYMD(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
+
+  const root = document.currentScript?.previousElementSibling;
+  const input = root?.querySelector("#rp-dates");
+  const btn = root?.querySelector("#rp-go");
+
+  if (!root || !input || !btn) {
+    console.warn("ReserveDatePicker: elements not found");
+  } else {
+    const baseUrl = root.getAttribute("data-base-url") || "";
+    const dParam = root.getAttribute("data-d") || "";
+
+    let startDate = null;
+    let endDate = null;
+
+    function openRoverpass() {
+      const url = new URL(baseUrl);
+      url.searchParams.set("d", dParam);
+
+      if (startDate && endDate) {
+        url.searchParams.set("check_in", toYMD(startDate));
+        url.searchParams.set("check_out", toYMD(endDate));
+      }
+
+      window.open(url.toString(), "_blank", "noopener,noreferrer");
+    }
+
+    btn.addEventListener("click", openRoverpass);
+
+    // Load Litepicker from CDN then initialize
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css";
+    document.head.appendChild(css);
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js";
+    script.onload = () => {
+      // Litepicker becomes available as window.Litepicker
+      const Litepicker = window.Litepicker;
+      if (!Litepicker) {
+        console.error("Litepicker failed to load");
+        return;
+      }
+    
+    const isMobile = window.matchMedia("(max-width: 640px)").matches;
+      
+      new Litepicker({
+        element: input,
+        singleMode: false,
+        numberOfMonths: isMobile ? 1 : 2,
+        numberOfColumns: isMobile ? 1 : 2,
+        format: "MM/DD/YYYY",
+        setup: (picker) => {
+          picker.on("selected", (date1, date2) => {
+            startDate = date1?.dateInstance ?? null;
+            endDate = date2?.dateInstance ?? null;
+          });
+        },
+      });
+    };
+    document.head.appendChild(script);
+  }
+</script>
+
+<style>
+  .reserve-picker {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    max-width: 520px;
+    width; 100%;
+  }
+
+  .reserve-input {
+    flex: 1;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-right: 0;
+    border-radius: 999px 0 0 999px;
+    font-size: 1rem;
+    background: rgb(255, 234, 196);
+  }
+
+  .reserve-button {
+    padding: 0.8rem 1rem;
+    border-left: 0;
+    color: rgb(255, 234, 196);
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(81, 69, 38);
+    border-radius: 0 999px 999px 0;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .reserve-button:hover {
+    background: rgb(80, 86, 53);
+  }
+
+  @media (max-width: 520px) {
+  .reserve-picker {
+    max-width: 100%;
+    flex-wrap: wrap;
+    border-radius: 999px
+  }
+
+  .reserve-input {
+    font-size: 0.95rem;
+    width: 100%;
+    border-right: 1px solid rgb(0, 0, 0);
+    border-radius: 999px;
+  }
+
+  .reserve-button {
+    width: 100%;
+    min-width: 0;
+    margin-top: 10px;
+    border-left: 1px solid rgb(0, 0, 0);
+    border-radius: 999px;
+  }
+}
+</style>
