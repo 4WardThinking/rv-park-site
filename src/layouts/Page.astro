@@ -14,13 +14,18 @@ import { nav } from "../config/nav.js";
 
 const { seo } = Astro.props as Props;
 
-// Build nav links that respect GitHub Pages base path (/rv-park-site/)
-const baseUrl = import.meta.env.BASE_URL; // "/" locally, "/rv-park-site/" on GitHub Pages
-const navWithBase = nav.map((item) => ({
-  ...item,
-  // nav uses "slug" in this theme
-  slug: `${baseUrl}${String(item.slug ?? "").replace(/^\/+/, "")}`.replace(/\/{2,}/g, "/"),
-}));
+const siteOrigin = Astro.site?.origin ?? "https://4wardthinking.github.io";
+const repoBase = import.meta.env.BASE_URL; // "/rv-park-site/" on Pages
+
+const navWithBase = nav.map((item) => {
+  const clean = String(item.slug ?? "").replace(/^\/+/, "").replace(/\/+$/, "");
+  // Home should go to the base root
+  const path = clean ? `${repoBase}${clean}/` : `${repoBase}`;
+  return {
+    ...item,
+    slug: new URL(path, siteOrigin).toString(),
+  };
+});
 ---
 
 <Layout seo={seo}>
