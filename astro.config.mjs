@@ -7,7 +7,7 @@ import lit from "@astrojs/lit";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://4WardThinking.github.io',
-  base: "/rv-park-site",
+  base: "/rv-park-site/",
   sitemap: true,
   integrations: [sitemap(), mdx(), lit(), icon()], // Add renderers to the config
 });
