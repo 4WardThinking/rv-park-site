@@ -15,89 +15,91 @@ const description =
       "Full-hookup RV sites with easy access, quiet nights, and simple reservations.",
     }}
   >
+  <div class="rvsitespage">
   <TextSection>
-  <div class="rvsplit">
-    <div class="rvsplit__left">
-      <h3>Choose the RV site that fits your rig</h3>
+    <div class="rvsplit">
+      <div class="rvsplit__left">
+        <h3>Choose the RV site that fits your rig</h3>
 
-      <p>
-        We offer 26 full-hookup options with space to relax and easy check-in.
-        Pick your dates below to check availability and pricing.
-      </p>
+        <p>
+          We offer 26 full-hookup options with space to relax and easy check-in.
+          Pick your dates below to check availability and pricing.
+        </p>
 
-      {/* Desktop picker (in left column) */}
-      <div class="picker-desktop">
-        <ReserveDatePicker
-          parkSlug="fourwardcast-flippin-ar"
-          d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
-          buttonText="Reserve Now"
-        />
+        {/* Desktop picker (in left column) */}
+        <div class="picker-desktop">
+          <ReserveDatePicker
+            parkSlug="fourwardcast-flippin-ar"
+            d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+            buttonText="Reserve Now"
+          />
+        </div>
+
+        <h3>Full Hookup Sites</h3>
+
+        <p>
+          <strong>Best for:</strong> Weekend stays, longer visits, and full-service comfort.
+        </p>
+
+        <p>
+          15/30/50 amp electric<br />
+          Water + Sewer<br />
+          Pull-through and back-in options
+        </p>
       </div>
 
-      <h3>Full Hookup Sites</h3>
-
-      <p>
-        <strong>Best for:</strong> Weekend stays, longer visits, and full-service comfort.
-      </p>
-
-      <p>
-        15/30/50 amp electric<br />
-        Water + Sewer<br />
-        Pull-through and back-in options
-      </p>
-    </div>
-
-    <div class="rvsplit__right">
-      <video
-        src={`${import.meta.env.BASE_URL}assets/images/videos/rvsites2.webm`}
-        autoplay
-        muted
-        loop
-        preload="metadata"
-        class="rvsplit__img"
-      />
-
-      {/* Mobile picker (under image) */}
-      <div class="picker-mobile">
-        <ReserveDatePicker
-          parkSlug="fourwardcast-flippin-ar"
-          d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
-          buttonText="Reserve Now"
+      <div class="rvsplit__right">
+        <video
+          src={`${import.meta.env.BASE_URL}assets/images/videos/rvsites2.webm`}
+          autoplay
+          muted
+          loop
+          preload="metadata"
+          class="rvsplit__img"
         />
+
+        {/* Mobile picker (under image) */}
+        <div class="picker-mobile">
+          <ReserveDatePicker
+            parkSlug="fourwardcast-flippin-ar"
+            d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+            buttonText="Reserve Now"
+          />
+        </div>
       </div>
     </div>
-  </div>
 
-  <hr />
+    <hr />
 
-  <h3>What’s included with every RV stay</h3>
-  <ul>
-    <li>Restrooms / showers</li>
-    <li>Wi-Fi <em>(currently being rolled out)</em></li>
-    <li>Picnic tables</li>
-    <li>Fire rings</li>
-    <li>Quiet hours and family-friendly atmosphere</li>
-  </ul>
+    <h3>What’s included with every RV stay</h3>
+    <ul>
+      <li>Restrooms / showers</li>
+      <li>Wi-Fi <em>(currently being rolled out)</em></li>
+      <li>Picnic tables</li>
+      <li>Fire rings</li>
+      <li>Quiet hours and family-friendly atmosphere</li>
+    </ul>
 
-  <hr />
+    <hr />
 
-  <h3>Pricing</h3> 
-  <ul>
-    <li><strong>Daily</strong> $50</li>
-    <li><strong>Weekly</strong> $250</li>
-    <li><strong>Monthly</strong> $600</li>
-  </ul>
-    Rates based on 1 - 4 people. Each additional person is $5/night.
-    Children under 2 are free.
-  <hr />
+    <h3>Pricing</h3> 
+    <ul>
+      <li><strong>Daily</strong> $50</li>
+      <li><strong>Weekly</strong> $250</li>
+      <li><strong>Monthly</strong> $600</li>
+    </ul>
+      Rates based on 1 - 4 people. Each additional person is $5/night.
+      Children under 2 are free.
+    <hr />
 
-  <h3>Need help picking a site?</h3>
-  <p>
-    Call or text: <strong>(327) 324-5000</strong><br />
-    Or email:
-    <a href="mailto:reservations@fourwardcast.com">reservations@fourwardcast.com</a>
-  </p>
+    <h3>Need help picking a site?</h3>
+    <p>
+      Call or text: <strong>(327) 324-5000</strong><br />
+      Or email:
+      <a href="mailto:reservations@fourwardcast.com">reservations@fourwardcast.com</a>
+    </p>
   </TextSection>
+  </div>
 </Layout>
 
 
@@ -149,4 +151,15 @@ const description =
     display: block;
   }
 }
+@media (prefers-reduced-motion: no-preference) {
+  .rvsitespage {
+    animation: rvEnter 600ms cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  @keyframes rvEnter {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
 </style>

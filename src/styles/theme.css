@@ -36,3 +36,19 @@
 	--theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont,
 		sans-serif;
 }
+
+@media (min-width: 1600px) {
+	:root {
+		--container-max-width: 1600px;
+		--container-max-width-narrow: 1100px;
+		--section-margin: 4rem;
+	}
+}
+
+@media (min-width: 2000px) {
+	:root {
+		--container-max-width: 1800px;
+		--container-max-width-narrow: 1250px;
+		--section-margin: 5rem;
+	}
+}
