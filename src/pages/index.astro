@@ -25,7 +25,6 @@ import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro'
 			<h2>Explore Marion County</h2>
 			<p>Check current lake levels and conditions before you head out.</p>
 
-			<div class="feature-card__grid">
 				<div class="lake-card">
 					<div class="lake-widget__frame-wrap">
 					<iframe
@@ -39,20 +38,16 @@ import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro'
 					></iframe>
 					</div>
 				</div>
-				<div class="lake-card">
-					<div class="map__frame-wrap">
-						<iframe
-							title="FourWardCast location map"
-							class="map__frame"
-							loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade"
-							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6427.890664114155!2d-92.62990011634386!3d36.
-							337874750818244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87ce3b48eec0185d%3A0xbc697a8e266401dc
-							!2sFourWardCast%20Family%20Campground%20and%20Cabins%20at%20Bull%20Shoals%20Lake!5e0!3m2!1sen!2sus!4v1768585731407!5m2!1sen!2sus"
-						></iframe>
-					</div>
-				</div>
-			</div>
+			<iframe
+				title="FourWardCast location map"
+				class="map__frame"
+				loading="lazy"
+				style="border-radius: 18px; height: 380px;"
+				referrerpolicy="no-referrer-when-downgrade"
+				src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6427.890664114155!2d-92.62990011634386!3d36.
+				337874750818244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87ce3b48eec0185d%3A0xbc697a8e266401dc
+				!2sFourWardCast%20Family%20Campground%20and%20Cabins%20at%20Bull%20Shoals%20Lake!5e0!3m2!1sen!2sus!4v1768585731407!5m2!1sen!2sus"
+			></iframe>
 		</section>
 		<section class ="blank-space">
 			<h1></h1>
