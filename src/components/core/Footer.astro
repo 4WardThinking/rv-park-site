@@ -111,6 +111,8 @@ const { footerSocials, footerLists, copyrightName, background, color, showPlug: 
       padding: 5vh 0;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
+      justify-items: center;
+      text-align: center;
     }
   }
   @media (max-width: 600px) {
@@ -118,9 +120,16 @@ const { footerSocials, footerLists, copyrightName, background, color, showPlug: 
       padding: 5vh 0;
       grid-template-columns: 1fr;
       gap: 1rem;
+      justify-items: center;
+      text-align: center;
     }
     .footer-copyright__container {
       flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-socials__list {
+      justify-content: center;
     }
   }
 </style>
