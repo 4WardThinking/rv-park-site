@@ -18,6 +18,23 @@ export const footerSocials = [
 
 export const footerLists = [
 	{
+		title: 'Quick Links',
+		items: [
+			{
+				title: 'Reserve Now',
+				slug: 'https://www.roverpass.com/c/fourwardcast-flippin-ar/booking/?d=5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5',
+			},
+			{
+				title: 'Sites',
+				slug: 'sites/',
+			},
+			{
+				title: 'Amenities',
+				slug: 'amenities',
+			},
+		],
+	},
+	{
 		title: 'Company',
 		items: [
 			{

@@ -5,6 +5,7 @@ import type { Props as BaseHeadProps } from "../components/head/BaseHead.astro";
 import Logo from "../components/Logo.astro";
 import settings from "../config/settings";
 import { footerLists, footerSocials } from "../config/footer";
+import { Icon } from "astro-icon/components"; 
 
 export interface Props {
   seo?: BaseHeadProps;
@@ -36,9 +37,12 @@ const navWithBase = nav.map((item) => {
 
     <Button
       slot="action-item"
-      href="https://www.roverpass.com/c/fourwardcast-flippin-ar/booking/?d=5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+      href="tel:+13273245000"
+      class="call-button"
+      aria-label="Call (327) 324-5000"
     >
-      Reserve Now
+      <Icon name="mdi:phone" class="call-icon" aria-hidden="true" />
+      <span class="call-number">(327) 324-5000</span>
     </Button>
   </Header>
 
@@ -58,3 +62,22 @@ const navWithBase = nav.map((item) => {
     <Logo slot="logo" />
   </Footer>
 </Layout>
+
+<style>
+  .call-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal centering */
+  justify-content: center;
+  text-align: center;
+  gap: 0.1rem;
+}
+.call-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+.call-number {
+  font-weight: 700;
+}
+</style>

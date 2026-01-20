@@ -1,103 +1,113 @@
 ---
-import { Container, FeatureCard } from '@components/odyssey-theme';
+import { Container } from '@components/odyssey-theme';
 
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import AlternatingFeatureSection from '../components/sections/AlternatingFeatureSection.astro';
 ---
 
 <Layout>
 	<HomeHeroSection />
+
 	<Container>
-		<section class="feature-card__section">
-			<h2>Come Stay a While</h2>
-			<p>
-				Choose to stay in one of our cozy cabins or reserve one of our RV sites.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="cabins" title="Cabins" imgSrc={`${import.meta.env.BASE_URL}assets/images/home/cabin`}>
-				</FeatureCard>
-				<FeatureCard href="rvsites" title="RV Sites" imgSrc={`${import.meta.env.BASE_URL}assets/images/home/rv`}>
-				</FeatureCard>
-			</div>
-		</section>
+		<!-- Alternating sections under the hero -->
+		<AlternatingFeatureSection
+			title="Connect with Nature"
+			description="Make space for fresh air and open water at FourWardCast Family Campground and Cabins—an easy home base for outdoor days."
+			mediaType="image"
+			mediaSrc={`${import.meta.env.BASE_URL}assets/images/home/ariellakeview.jpg`}
+			mediaAlt="Outdoor recreation near Bull Shoals Lake"
+			ctaText="View Activities"
+			ctaHref="/rv-park-site/amenities/"
+			bullets={[
+				{ icon: "mdi:sail-boat", title: "Boating", text: "Cruise, float, or anchor out and take in the lake views." },
+				{ icon: "mdi:fish", title: "Fishing", text: "Try your luck in nearby waters known for great fishing." },
+				{ icon: "mdi:kayaking", title: "Kayaking & Canoeing", text: "Glide through calm stretches and discover quiet coves." },
+			]}
+		/>
 
-		<section class="lake-widget__section">
-			<h2>Explore Marion County</h2>
-			<p>Check current lake levels and conditions before you head out.</p>
-
-				<div class="lake-card">
-					<div class="lake-widget__frame-wrap">
-					<iframe
-						src="https://levels.fourwardcast.com/?embed=1&theme=fwc"
-						title="Bull Shoals Lake Levels"
-						class="lake-widget__frame"
-						style="overflow: hidden; display:block; border:0cap;"
-						loading="lazy"
-						height="380"
-						width="380"
-					></iframe>
-					</div>
-				</div>
-			<iframe
-				title="FourWardCast location map"
-				class="map__frame"
-				loading="lazy"
-				style="border-radius: 18px; height: 380px;"
-				referrerpolicy="no-referrer-when-downgrade"
-				src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6427.890664114155!2d-92.62990011634386!3d36.
-				337874750818244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87ce3b48eec0185d%3A0xbc697a8e266401dc
-				!2sFourWardCast%20Family%20Campground%20and%20Cabins%20at%20Bull%20Shoals%20Lake!5e0!3m2!1sen!2sus!4v1768585731407!5m2!1sen!2sus"
-			></iframe>
-		</section>
-		<section class ="blank-space">
-			<h1></h1>
-		</section>
+		<AlternatingFeatureSection
+			title="Rest & Recharge"
+			description="Evenings are perfect for unwinding—good conversation, campfire glow, and fresh night air."
+			mediaType="image"
+			mediaSrc={`${import.meta.env.BASE_URL}assets/images/home/riversunset.jpg`}
+			mediaAlt="Campground relaxation"
+			reverse
+			ctaText="Learn More"
+			ctaHref="/rv-park-site/sites/"
+			bullets={[
+				{ icon: "mdi:road-variant", title: "Scenic Drives", text: "Explore backroads and overlooks for classic Ozarks views." },
+				{ icon: "mdi:pool", title: "Swimming", text: "Cool off with a swim and a little sun by the pool." },
+				{ icon: "mdi:campfire", title: "Campfire Nights", text: "Settle in for a laid-back evening atmosphere and a great view of the sky on clear nights." },
+			]}
+		/>
 	</Container>
 </Layout>
 
 <style>
-	.lake-card {
+	.feature-card__section {
+		margin: var(--section-margin) auto;
+	}
+
+	/* Lake + Map grid */
+	.lake-map__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--theme-grid-gap);
+		align-items: start;
+	}
+
+	.lake-card,
+	.map-card {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		padding: 1.25rem;
 		border-radius: 28px;
 	}
-	.lake-widget__frame,
-	.map__frame {
-	width: 100%;
-	height: 100%;
-	border: 0;
-	display: block;
-	}
+
 	.lake-widget__frame-wrap,
 	.map__frame-wrap {
-	width: min(420px, 100%);
-	aspect-ratio: 420 / 380; /* keeps both cards same height */
-	border-radius: 18px;
-	overflow: hidden;
-	background: rgba(0, 0, 0, 0.06);
+		width: min(560px, 100%);
+		aspect-ratio: 420 / 380;
+		border-radius: 18px;
+		overflow: hidden;
+		background: rgba(0, 0, 0, 0.06);
 	}
-	.feature-card__section {
-		margin: var(--section-margin) auto;
+
+	.lake-widget__frame,
+	.map__frame {
+		width: 100%;
+		height: 100%;
+		border: 0;
+		display: block;
 	}
-	.feature-card__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
-	}
+
 	.map__actions {
-	display: flex;
-	justify-content: center;
-	margin-top: 12px;
+		display: flex;
+		justify-content: center;
+		margin-top: 12px;
 	}
 
 	.map__link {
-	font-weight: 700;
-	text-decoration: none;
+		font-weight: 800;
+		text-decoration: none;
+		color: var(--theme-primary);
 	}
-	@media (max-width: 768px) {
-		.feature-card__grid {
+
+	.blank-space {
+		height: 3rem;
+	}
+
+	@media (max-width: 900px) {
+		.lake-map__grid {
 			grid-template-columns: 1fr;
 		}
+
+		.lake-widget__frame-wrap,
+		.map__frame-wrap {
+			width: min(680px, 100%);
+		}
+	}
 </style>
