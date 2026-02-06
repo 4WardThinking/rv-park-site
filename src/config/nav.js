@@ -8,7 +8,7 @@ export const nav = [
 		slug: 'company/about',
 	},
 	{
-		title: 'Sites',
+		title: 'Sites & Cabins',
 		slug: 'sites',
 	},
 	{ 

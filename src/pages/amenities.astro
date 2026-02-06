@@ -1,0 +1,652 @@
+---
+import Layout from "../layouts/Page.astro";
+import { Icon } from "astro-icon/components";
+
+const featured = [
+  { icon: "mdi:pool", title: "Outdoor Pool", text: "Cool off after a day on the lake. Open seasonally for all guests." },
+  { icon: "mdi:grill", title: "Pavilion", text: "Full kitchen and covered dining area, perfect for group cookouts and gatherings." },
+  { icon: "mdi:gamepad-variant", title: "Game & Movie Room", text: "Indoor fun for rainy days and downtime. Games, movies, and a place to hang out." },
+  { icon: "mdi:cart", title: "Camp Store", text: "Essentials, snacks, ice, firewood, and supplies without leaving the property." },
+  { icon: "mdi:shower-head", title: "Shower House", text: "Clean restrooms, hot showers, and on-site laundry facilities." },
+  { icon: "mdi:wifi", title: "Wi-Fi Access", text: "Stay connected across the campground while you unplug from everything else." },
+];
+
+const outdoor = [
+  { icon: "mdi:fish", title: "Fishing", text: "Minutes from Bull Shoals Lake and the White River, known for trophy trout and bass." },
+  { icon: "mdi:sail-boat", title: "Boating", text: "Cruise, float, or anchor out and take in the lake from the water." },
+  { icon: "mdi:kayaking", title: "Kayaking & Canoeing", text: "Glide through calm stretches and discover quiet coves." },
+  { icon: "mdi:swim", title: "Swimming", text: "Jump in the pool or head to the lake for a dip on warm days." },
+  { icon: "mdi:campfire", title: "Campfire Nights", text: "Fire rings at every site. Settle in under the stars." },
+  { icon: "mdi:road-variant", title: "Scenic Drives", text: "Explore winding backroads and overlooks for classic Ozarks views." },
+];
+
+const siteAmenities = [
+  { icon: "mdi:flash", label: "15/30/50 Amp Electric" },
+  { icon: "mdi:water", label: "Water & Sewer Hookups" },
+  { icon: "mdi:table-furniture", label: "Picnic Tables" },
+  { icon: "mdi:fire", label: "Fire Rings" },
+  { icon: "mdi:car", label: "Parking at Every Site" },
+  { icon: "mdi:pine-tree", label: "Shade Trees" },
+  { icon: "mdi:dog", label: "Pet Friendly" },
+];
+---
+
+<Layout
+  seo={{
+    title: "Amenities",
+    description:
+      "Explore everything FourWardCast Family Campground has to offer — outdoor pool, pavilion, game room, camp store, lake access, and more in the Ozark Mountains.",
+  }}
+>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="amen-hero">
+    <div class="amen-hero__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0,160 C180,80 360,240 540,160 C720,80 900,240 1080,160 C1200,100 1320,200 1440,160 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.3"/>
+        <path d="M0,200 C200,140 400,260 600,200 C800,140 1000,260 1200,200 C1320,160 1380,230 1440,200 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.5"/>
+        <path d="M0,260 C240,220 480,300 720,260 C960,220 1200,300 1440,260 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="amen-hero__content reveal">
+      <p class="amen-hero__eyebrow">FourWardCast Family Campground</p>
+      <h1 class="amen-hero__title">Campground<br/><span class="amen-hero__accent">Amenities</span></h1>
+      <p class="amen-hero__sub">Everything you need for a comfortable stay, from full hookups and a pool to lake access and family fun.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURED AMENITIES ═══════════════ -->
+  <section class="amen-featured">
+    <div class="amen-featured__container">
+      <div class="amen-featured__header reveal">
+        <h2 class="amen-featured__title">On-Site Facilities</h2>
+        <p class="amen-featured__sub">Comfort and convenience right at the campground.</p>
+      </div>
+      <div class="amen-featured__grid">
+        {featured.map((item, i) => (
+          <div class="feat-card reveal" style={`--card-delay: ${i * 0.07}s`}>
+            <div class="feat-card__icon-wrap">
+              <Icon name={item.icon} class="feat-card__icon" />
+            </div>
+            <h3 class="feat-card__title">{item.title}</h3>
+            <p class="feat-card__text">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ OUTDOOR ACTIVITIES ═══════════════ -->
+  <section class="amen-outdoor">
+    <div class="amen-outdoor__container">
+      <div class="amen-outdoor__header reveal">
+        <h2 class="amen-outdoor__title">Outdoor Activities</h2>
+        <p class="amen-outdoor__sub">Minutes from Bull Shoals Lake and the White River. There's always something to do.</p>
+      </div>
+      <div class="amen-outdoor__grid">
+        {outdoor.map((item, i) => (
+          <div class="activity-card reveal" style={`--card-delay: ${i * 0.07}s`}>
+            <div class="activity-card__icon-wrap">
+              <Icon name={item.icon} class="activity-card__icon" />
+            </div>
+            <div class="activity-card__body">
+              <h3 class="activity-card__title">{item.title}</h3>
+              <p class="activity-card__text">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SITE AMENITIES STRIP ═══════════════ -->
+  <section class="amen-strip">
+    <div class="amen-strip__container reveal">
+      <h2 class="amen-strip__title">At Every Site</h2>
+      <div class="amen-strip__chips">
+        {siteAmenities.map((item) => (
+          <div class="strip-chip">
+            <Icon name={item.icon} class="strip-chip__icon" />
+            <span class="strip-chip__label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GALLERY BANNER ═══════════════ -->
+  <section class="amen-banner reveal">
+    <div class="amen-banner__image-wrap">
+      <img
+        src={`${import.meta.env.BASE_URL}assets/images/home/aerialview.png`}
+        alt="Aerial view of FourWardCast Campground"
+        class="amen-banner__img"
+        loading="lazy"
+      />
+      <div class="amen-banner__overlay">
+        <div class="amen-banner__stat-row">
+          <div class="amen-banner__stat">
+            <span class="amen-banner__stat-number">31</span>
+            <span class="amen-banner__stat-label">Acres</span>
+          </div>
+          <div class="amen-banner__stat-divider"></div>
+          <div class="amen-banner__stat">
+            <span class="amen-banner__stat-number">26</span>
+            <span class="amen-banner__stat-label">RV Sites</span>
+          </div>
+          <div class="amen-banner__stat-divider"></div>
+          <div class="amen-banner__stat">
+            <span class="amen-banner__stat-number">4</span>
+            <span class="amen-banner__stat-label">Cabins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="amen-cta reveal">
+    <div class="amen-cta__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,0 L0,40 C240,80 480,20 720,60 C960,100 1200,30 1440,60 L1440,0 Z" fill="var(--theme-bg)" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="amen-cta__inner">
+      <h2 class="amen-cta__title">Ready to book your stay?</h2>
+      <p class="amen-cta__text">Check out our sites and cabins, or give us a call. We're happy to help.</p>
+      <div class="amen-cta__actions">
+        <a class="amen-cta__btn" href={`${import.meta.env.BASE_URL}sites/`}>
+          View Sites & Cabins
+        </a>
+        <a class="amen-cta__btn amen-cta__btn--secondary" href="tel:+13273245000">
+          <Icon name="mdi:phone" width={20} height={20} />
+          (327) 324-5000
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- ═══════════════ CLIENT SCRIPT ═══════════════ -->
+<script is:inline>
+(function() {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
+})();
+</script>
+
+<style>
+  /* ════════════════════════════════════════
+     REVEAL ANIMATION
+     ════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger cards */
+  .feat-card.is-visible,
+  .activity-card.is-visible {
+    animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--card-delay, 0s);
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ */
+  .amen-hero {
+    position: relative;
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    overflow: hidden;
+    text-align: center;
+  }
+  .amen-hero__topo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .amen-hero__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .amen-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .amen-hero__eyebrow {
+    font-family: var(--theme-font-family-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  .amen-hero__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+  }
+  .amen-hero__accent {
+    color: var(--theme-surface-1);
+  }
+  .amen-hero__sub {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════════════════
+     FEATURED AMENITIES GRID
+     ════════════════════════════════════════ */
+  .amen-featured {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .amen-featured__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .amen-featured__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    color: var(--theme-on-bg);
+  }
+  .amen-featured__sub {
+    font-size: 1.05rem;
+    opacity: 0.75;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .amen-featured__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .feat-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem 1.5rem 1.75rem;
+    border: 1.5px solid rgba(81, 69, 38, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .feat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(81, 69, 38, 0.1);
+  }
+  .feat-card__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(255, 134, 48, 0.1);
+    margin-bottom: 1rem;
+  }
+  .feat-card__icon {
+    width: 28px;
+    height: 28px;
+    color: var(--theme-surface-1);
+  }
+  .feat-card__title {
+    font-family: var(--theme-font-family-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: var(--theme-on-bg);
+  }
+  .feat-card__text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════
+     OUTDOOR ACTIVITIES
+     ════════════════════════════════════════ */
+  .amen-outdoor {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .amen-outdoor__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .amen-outdoor__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    color: var(--theme-on-bg);
+  }
+  .amen-outdoor__sub {
+    font-size: 1.05rem;
+    opacity: 0.75;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .amen-outdoor__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .activity-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    background: #fff;
+    border-radius: 16px;
+    border: 1.5px solid rgba(81, 69, 38, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(81, 69, 38, 0.1);
+  }
+  .activity-card__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    background: rgba(204, 230, 208, 0.4);
+  }
+  .activity-card__icon {
+    width: 22px;
+    height: 22px;
+    color: var(--theme-primary);
+  }
+  .activity-card__title {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+    color: var(--theme-on-bg);
+  }
+  .activity-card__text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════
+     SITE AMENITIES STRIP
+     ════════════════════════════════════════ */
+  .amen-strip {
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .amen-strip__container {
+    background: var(--theme-primary);
+    border-radius: 24px;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+  }
+  .amen-strip__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--theme-on-primary);
+    margin: 0 0 1.5rem;
+  }
+  .amen-strip__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .strip-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: var(--theme-on-primary);
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .strip-chip:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+  .strip-chip__icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.85;
+  }
+  .strip-chip__label {
+    white-space: nowrap;
+  }
+
+  /* ════════════════════════════════════════
+     GALLERY BANNER
+     ════════════════════════════════════════ */
+  .amen-banner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem);
+  }
+  .amen-banner__image-wrap {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .amen-banner__img {
+    width: 100%;
+    height: clamp(280px, 36vw, 440px);
+    object-fit: cover;
+    display: block;
+  }
+  .amen-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(81, 69, 38, 0.85) 0%, rgba(81, 69, 38, 0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .amen-banner__stat-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .amen-banner__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--theme-on-primary);
+  }
+  .amen-banner__stat-number {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .amen-banner__stat-label {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.75;
+    margin-top: 0.3rem;
+  }
+  .amen-banner__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* ════════════════════════════════════════
+     CTA
+     ════════════════════════════════════════ */
+  .amen-cta {
+    position: relative;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    text-align: center;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem);
+    padding-bottom: calc(clamp(3rem, 6vw, 4rem) + var(--theme-shape-radius));
+    margin-top: 3rem;
+    margin-bottom: calc(-1 * var(--theme-shape-radius));
+    overflow: hidden;
+  }
+  .amen-cta__topo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .amen-cta__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .amen-cta__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .amen-cta__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  .amen-cta__text {
+    opacity: 0.8;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  .amen-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .amen-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--theme-button-border-radius);
+    text-decoration: none;
+    font-family: var(--theme-font-family-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--theme-surface-1);
+    color: #fff;
+    transition: transform var(--theme-transition), filter var(--theme-transition);
+  }
+  .amen-cta__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+  .amen-cta__btn--secondary {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+     ════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .amen-featured__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .amen-outdoor__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .amen-featured__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .feat-card {
+      padding: 1.4rem 1rem 1.2rem;
+    }
+    .feat-card__icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+    }
+    .feat-card__icon {
+      width: 24px;
+      height: 24px;
+    }
+    .amen-banner__stat-row {
+      gap: 1rem;
+    }
+    .amen-banner__stat-number {
+      font-size: 1.8rem;
+    }
+  }
+
+  /* ════════════════════════════════════════
+     REDUCED MOTION
+     ════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .feat-card.is-visible,
+    .activity-card.is-visible { animation: none; opacity: 1; transform: none; }
+  }
+</style>

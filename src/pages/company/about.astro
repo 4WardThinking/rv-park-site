@@ -1,51 +1,566 @@
 ---
-import { TextSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
-import HeroSection from '../../components/sections/heros/HeroSection.astro';
 
 const seo = {
 	title: 'About | FourWardCast',
 	description: 'About Page for FourWardCast Family Campground and Cabins at Bull Shoals Lake',
 };
+
+const amenities = [
+  { icon: "🏕️", title: "RV & Tent Sites", text: "26 full-hookup RV sites plus tent camping" },
+  { icon: "🏠", title: "Cabins & Campers", text: "Basic cabins, deluxe cabins, and vintage camper rentals" },
+  { icon: "🏊", title: "Outdoor Pool", text: "Cool off with a swim after a day on the lake" },
+  { icon: "🏛️", title: "Pavilion", text: "Full kitchen and dining area for group gatherings" },
+  { icon: "🎮", title: "Game & Movie Room", text: "Indoor fun for rainy days and downtime" },
+  { icon: "🛒", title: "Camp Store", text: "Essentials, snacks, and supplies on-site" },
+  { icon: "🚿", title: "Shower House", text: "Clean restrooms, showers, and laundry" },
+  { icon: "📶", title: "Wi-Fi Access", text: "Stay connected while you unplug" },
+];
 ---
 
 <Layout {seo}>
-	<HeroSection>
-		<div slot="text-container">
-			<h1>About FourWardCast</h1>
-			<p>
-				FourWardCast is a veteran-owned, family-run campground on 
-        Bull Shoals Lake in the Ozark Mountains of Arkansas.
-			</p>
-		</div>
-    <picture slot="image-container">
-      <img
-        src={`${import.meta.env.BASE_URL}assets/images/home/familyphoto.png`}
-        alt="FourWardCast Family Photo"
-        id="home-hero-image"
-      />
-    </picture>
-	</HeroSection>
-  <TextSection narrow>
-    <p>
-      Our name tells our story: Ward and his three sons—the “FourWard”—combined with the
-      mother’s maiden name, Castaneda (“Cast”). Together, FourWardCast nods to the fishing
-      roots of this place and the traditions we’re building as a family—cast after cast, season
-      after season.
-    </p>
-    <p>
-      Set on 31 acres near Flippin, Arkansas, just minutes from the White River, FourWardCast is
-      made for families, anglers, and anyone who needs a quiet reset outdoors.
-    </p>
-    
-    <p>
-      We offer RV and tent sites, basic and deluxe cabins, and vintage camper rentals, along with the comforts
-      that make camping easy: a camp store, outdoor pool, pavilion with a full kitchen and
-      dining area, game/movie room, shower house, bathrooms, laundry, and more
-    </p>
-    <p>
-      From lake days and river floats to early-morning trout fishing, 
-      we’re here to help you make the kind of memories that bring you back.
-    </p>
-  </TextSection>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="about-hero">
+    <div class="about-hero__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0,160 C180,80 360,240 540,160 C720,80 900,240 1080,160 C1200,100 1320,200 1440,160 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.3"/>
+        <path d="M0,200 C200,140 400,260 600,200 C800,140 1000,260 1200,200 C1320,160 1380,230 1440,200 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.5"/>
+        <path d="M0,260 C240,220 480,300 720,260 C960,220 1200,300 1440,260 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="about-hero__content reveal">
+      <p class="about-hero__eyebrow">Veteran-Owned &middot; Family-Operated</p>
+      <h1 class="about-hero__title">About<br/><span class="about-hero__accent">FourWardCast</span></h1>
+      <p class="about-hero__sub">A family campground on Bull Shoals Lake in the Ozark Mountains of Arkansas.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STORY SECTION ═══════════════ -->
+  <section class="about-story">
+    <div class="about-story__container">
+      <div class="about-story__image-col reveal">
+        <div class="about-story__frame">
+          <img
+            src={`${import.meta.env.BASE_URL}assets/images/home/familyphoto.png`}
+            alt="The FourWardCast family"
+            class="about-story__img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <div class="about-story__text-col">
+        <h2 class="about-story__heading reveal">Our Name Tells Our Story</h2>
+        <p class="about-story__body reveal">
+          Ward and his three sons — the "FourWard" — combined with the
+          mother's maiden name, Castaneda ("Cast"). Together, FourWardCast nods to the fishing
+          roots of this place and the traditions we're building as a family — cast after cast, season
+          after season.
+        </p>
+        <p class="about-story__body reveal">
+          Set on 31 acres near Flippin, Arkansas, just minutes from the White River, FourWardCast is
+          made for families, anglers, and anyone who needs a quiet reset outdoors.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SPLIT FEATURE ═══════════════ -->
+  <section class="about-split">
+    <div class="about-split__container">
+      <div class="about-split__text reveal">
+        <h2 class="about-split__heading">Minutes from the Lake</h2>
+        <p class="about-split__body">
+          From lake days and river floats to early-morning trout fishing,
+          we're here to help you make the kind of memories that bring you back.
+        </p>
+        <div class="about-split__chips">
+          <span class="about-split__chip">Bull Shoals Lake</span>
+          <span class="about-split__chip">White River</span>
+          <span class="about-split__chip">Trout Fishing</span>
+          <span class="about-split__chip">Ozark Mountains</span>
+        </div>
+      </div>
+      <div class="about-split__image reveal">
+        <img
+          src={`${import.meta.env.BASE_URL}assets/images/home/ariellakeview.jpg`}
+          alt="Lake view near FourWardCast"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="about-cta reveal">
+    <div class="about-cta__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,0 L0,40 C240,80 480,20 720,60 C960,100 1200,30 1440,60 L1440,0 Z" fill="var(--theme-bg)" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="about-cta__inner">
+      <h2 class="about-cta__title">Ready to visit?</h2>
+      <p class="about-cta__text">Check availability and book your spot at the campground.</p>
+      <div class="about-cta__actions">
+        <a class="about-cta__btn" href={`${import.meta.env.BASE_URL}sites/`}>
+          View Sites & Cabins
+        </a>
+        <a class="about-cta__btn about-cta__btn--secondary" href={`${import.meta.env.BASE_URL}company/contact/`}>
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<!-- ═══════════════ CLIENT SCRIPT ═══════════════ -->
+<script is:inline>
+(function() {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
+})();
+</script>
+
+<style>
+  /* ════════════════════════════════════════
+     REVEAL ANIMATION
+     ════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger offer cards */
+  .offer-card.is-visible {
+    animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--card-delay, 0s);
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ */
+  .about-hero {
+    position: relative;
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    overflow: hidden;
+    text-align: center;
+  }
+  .about-hero__topo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .about-hero__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .about-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .about-hero__eyebrow {
+    font-family: var(--theme-font-family-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  .about-hero__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+  }
+  .about-hero__accent {
+    color: var(--theme-surface-1);
+  }
+  .about-hero__sub {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════════════════
+     STORY SECTION
+     ════════════════════════════════════════ */
+  .about-story {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .about-story__container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+  }
+  .about-story__frame {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(81, 69, 38, 0.15);
+    position: relative;
+  }
+  .about-story__frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    border: 3px solid rgba(255, 134, 48, 0.2);
+    pointer-events: none;
+  }
+  .about-story__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .about-story__heading {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+    color: var(--theme-on-bg);
+  }
+  .about-story__body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--theme-on-bg);
+    opacity: 0.85;
+    margin: 0 0 1rem;
+  }
+
+  /* ════════════════════════════════════════
+     PROPERTY BANNER
+     ════════════════════════════════════════ */
+  .about-banner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem);
+  }
+  .about-banner__image-wrap {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .about-banner__img {
+    width: 100%;
+    height: clamp(280px, 36vw, 440px);
+    object-fit: cover;
+    display: block;
+  }
+  .about-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(81, 69, 38, 0.85) 0%, rgba(81, 69, 38, 0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .about-banner__stat-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .about-banner__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--theme-on-primary);
+  }
+  .about-banner__stat-number {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .about-banner__stat-label {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.75;
+    margin-top: 0.3rem;
+  }
+  .about-banner__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* ════════════════════════════════════════
+     WHAT WE OFFER
+     ════════════════════════════════════════ */
+  .about-offer {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .about-offer__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .about-offer__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    color: var(--theme-on-bg);
+  }
+  .about-offer__sub {
+    font-size: 1.05rem;
+    opacity: 0.75;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .about-offer__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .offer-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 1.5rem 1.25rem;
+    border: 1.5px solid rgba(81, 69, 38, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  .offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(81, 69, 38, 0.1);
+  }
+  .offer-card__icon {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+  .offer-card__title {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem;
+    color: var(--theme-on-bg);
+  }
+  .offer-card__text {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════
+     SPLIT FEATURE
+     ════════════════════════════════════════ */
+  .about-split {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .about-split__container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+  }
+  .about-split__heading {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+    color: var(--theme-on-bg);
+  }
+  .about-split__body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin: 0 0 1.25rem;
+  }
+  .about-split__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .about-split__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    background: rgba(81, 69, 38, 0.06);
+    border: 1px solid rgba(81, 69, 38, 0.1);
+    border-radius: 999px;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--theme-on-bg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .about-split__chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(81, 69, 38, 0.1);
+  }
+  .about-split__image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(81, 69, 38, 0.12);
+  }
+  .about-split__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  /* ════════════════════════════════════════
+     CTA
+     ════════════════════════════════════════ */
+  .about-cta {
+    position: relative;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    text-align: center;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem);
+    padding-bottom: calc(clamp(3rem, 6vw, 4rem) + var(--theme-shape-radius));
+    margin-bottom: calc(-1 * var(--theme-shape-radius));
+    overflow: hidden;
+  }
+  .about-cta__topo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .about-cta__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .about-cta__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .about-cta__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  .about-cta__text {
+    opacity: 0.8;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  .about-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .about-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--theme-button-border-radius);
+    text-decoration: none;
+    font-family: var(--theme-font-family-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--theme-surface-1);
+    color: #fff;
+    transition: transform var(--theme-transition), filter var(--theme-transition);
+  }
+  .about-cta__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+  .about-cta__btn--secondary {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+     ════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .about-story__container {
+      grid-template-columns: 1fr;
+    }
+    .about-story__frame {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .about-offer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .about-split__container {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .about-offer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .offer-card {
+      padding: 1.2rem 1rem;
+    }
+    .about-banner__stat-row {
+      gap: 1rem;
+    }
+    .about-banner__stat-number {
+      font-size: 1.8rem;
+    }
+  }
+
+  /* ════════════════════════════════════════
+     REDUCED MOTION
+     ════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .offer-card.is-visible { animation: none; opacity: 1; transform: none; }
+  }
+</style>

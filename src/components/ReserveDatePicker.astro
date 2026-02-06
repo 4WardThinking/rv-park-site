@@ -10,88 +10,99 @@ const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
 
 <div class="reserve-picker" data-base-url={baseUrl} data-d={d}>
   <input
-    id="rp-dates"
     class="reserve-input"
     type="text"
     placeholder="Select dates"
     autocomplete="off"
     inputmode="none"
   />
-  <button id="rp-go" class="reserve-button" type="button">
+  <button class="reserve-button" type="button">
     {buttonText}
   </button>
 </div>
 
 <script is:inline>
+(function() {
   // Format Date -> YYYY-MM-DD
   function toYMD(date) {
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, "0");
-    const d = String(date.getDate()).padStart(2, "0");
-    return `${y}-${m}-${d}`;
+    var y = date.getFullYear();
+    var m = String(date.getMonth() + 1).padStart(2, "0");
+    var d = String(date.getDate()).padStart(2, "0");
+    return y + "-" + m + "-" + d;
   }
 
-  const root = document.currentScript?.previousElementSibling;
-  const input = root?.querySelector("#rp-dates");
-  const btn = root?.querySelector("#rp-go");
+  var root = document.currentScript?.previousElementSibling;
+  var input = root?.querySelector(".reserve-input");
+  var btn = root?.querySelector(".reserve-button");
 
   if (!root || !input || !btn) {
     console.warn("ReserveDatePicker: elements not found");
-  } else {
-    const baseUrl = root.getAttribute("data-base-url") || "";
-    const dParam = root.getAttribute("data-d") || "";
+    return;
+  }
 
-    let startDate = null;
-    let endDate = null;
+  var baseUrl = root.getAttribute("data-base-url") || "";
+  var dParam = root.getAttribute("data-d") || "";
 
-    function openRoverpass() {
-      const url = new URL(baseUrl);
-      url.searchParams.set("d", dParam);
+  var startDate = null;
+  var endDate = null;
 
-      if (startDate && endDate) {
-        url.searchParams.set("check_in", toYMD(startDate));
-        url.searchParams.set("check_out", toYMD(endDate));
-      }
-
-      window.open(url.toString(), "_blank", "noopener,noreferrer");
+  function openRoverpass() {
+    var url = new URL(baseUrl);
+    url.searchParams.set("d", dParam);
+    if (startDate && endDate) {
+      url.searchParams.set("check_in", toYMD(startDate));
+      url.searchParams.set("check_out", toYMD(endDate));
     }
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
+  }
 
-    btn.addEventListener("click", openRoverpass);
+  btn.addEventListener("click", openRoverpass);
 
-    // Load Litepicker from CDN then initialize
-    const css = document.createElement("link");
+  // Shared CDN loader — only loads once, queues callbacks for each picker
+  if (!window.__litepickerQueue) {
+    window.__litepickerQueue = [];
+    window.__litepickerReady = false;
+
+    var css = document.createElement("link");
     css.rel = "stylesheet";
     css.href = "https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css";
     document.head.appendChild(css);
 
-    const script = document.createElement("script");
+    var script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js";
-    script.onload = () => {
-      // Litepicker becomes available as window.Litepicker
-      const Litepicker = window.Litepicker;
-      if (!Litepicker) {
-        console.error("Litepicker failed to load");
-        return;
-      }
-    
-    const isMobile = window.matchMedia("(max-width: 640px)").matches;
-      
-      new Litepicker({
-        element: input,
-        singleMode: false,
-        numberOfMonths: isMobile ? 1 : 2,
-        numberOfColumns: isMobile ? 1 : 2,
-        format: "MM/DD/YYYY",
-        setup: (picker) => {
-          picker.on("selected", (date1, date2) => {
-            startDate = date1?.dateInstance ?? null;
-            endDate = date2?.dateInstance ?? null;
-          });
-        },
-      });
+    script.onload = function() {
+      window.__litepickerReady = true;
+      window.__litepickerQueue.forEach(function(fn) { fn(); });
+      window.__litepickerQueue = [];
     };
     document.head.appendChild(script);
   }
+
+  function initPicker() {
+    var Litepicker = window.Litepicker;
+    if (!Litepicker) { return; }
+    var isMobile = window.matchMedia("(max-width: 640px)").matches;
+    new Litepicker({
+      element: input,
+      singleMode: false,
+      numberOfMonths: isMobile ? 1 : 2,
+      numberOfColumns: isMobile ? 1 : 2,
+      format: "MM/DD/YYYY",
+      setup: function(picker) {
+        picker.on("selected", function(date1, date2) {
+          startDate = date1?.dateInstance ?? null;
+          endDate = date2?.dateInstance ?? null;
+        });
+      },
+    });
+  }
+
+  if (window.__litepickerReady) {
+    initPicker();
+  } else {
+    window.__litepickerQueue.push(initPicker);
+  }
+})();
 </script>
 
 <style>
@@ -100,7 +111,7 @@ const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
     align-items: stretch;
     gap: 0;
     max-width: 520px;
-    width; 100%;
+    width: 100%;
   }
 
   .reserve-input {
@@ -129,25 +140,25 @@ const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
   }
 
   @media (max-width: 520px) {
-  .reserve-picker {
-    max-width: 100%;
-    flex-wrap: wrap;
-    border-radius: 999px
-  }
+    .reserve-picker {
+      max-width: 100%;
+      flex-wrap: wrap;
+      border-radius: 999px;
+    }
 
-  .reserve-input {
-    font-size: 0.95rem;
-    width: 100%;
-    border-right: 1px solid rgb(0, 0, 0);
-    border-radius: 999px;
-  }
+    .reserve-input {
+      font-size: 0.95rem;
+      width: 100%;
+      border-right: 1px solid rgb(0, 0, 0);
+      border-radius: 999px;
+    }
 
-  .reserve-button {
-    width: 100%;
-    min-width: 0;
-    margin-top: 10px;
-    border-left: 1px solid rgb(0, 0, 0);
-    border-radius: 999px;
+    .reserve-button {
+      width: 100%;
+      min-width: 0;
+      margin-top: 10px;
+      border-left: 1px solid rgb(0, 0, 0);
+      border-radius: 999px;
+    }
   }
-}
 </style>

@@ -1,165 +1,1168 @@
 ---
 import Layout from "../layouts/Page.astro";
 import ReserveDatePicker from "../components/ReserveDatePicker.astro";
-import { TextSection } from "@components/odyssey-theme";
-
-const title = "RV Sites";
-const description =
-  "Full-hookup RV sites with easy access, quiet nights, and simple reservations.";
 ---
 
 <Layout
   seo={{
-    title: "RV Sites",
+    title: "Sites & Cabins",
     description:
-      "Full-hookup RV sites with easy access, quiet nights, and simple reservations.",
-    }}
-  >
-  <div class="rvsitespage">
-  <TextSection>
-    <div class="rvsplit">
-      <div class="rvsplit__left">
-        <h3>Choose the RV site that fits your rig</h3>
+      "Explore RV sites, cozy cabins, and tent camping at FourWardCast Family Campground on Bull Shoals Lake. Full hookups, scenic views, and family-friendly rates.",
+  }}
+>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="sites-hero">
+    <div class="sites-hero__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0,160 C180,80 360,240 540,160 C720,80 900,240 1080,160 C1200,100 1320,200 1440,160 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.3"/>
+        <path d="M0,200 C200,140 400,260 600,200 C800,140 1000,260 1200,200 C1320,160 1380,230 1440,200 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.5"/>
+        <path d="M0,260 C240,220 480,300 720,260 C960,220 1200,300 1440,260 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="sites-hero__content reveal">
+      <p class="sites-hero__eyebrow">FourWardCast Family Campground</p>
+      <h1 class="sites-hero__title">Find Your<br/><span class="sites-hero__accent">Perfect Stay</span></h1>
+      <p class="sites-hero__sub">Full-hookup RV sites, cozy cabins, and scenic tent camping on Bull Shoals Lake in the Ozark Mountains.</p>
+    </div>
+  </section>
 
-        <p>
-          We offer 26 full-hookup options with space to relax and easy check-in.
-          Pick your dates below to check availability and pricing.
-        </p>
+  <!-- ═══════════════ CATEGORY TABS ═══════════════ -->
+  <section class="sites-tabs-wrap">
+    <nav class="sites-tabs reveal" aria-label="Accommodation type">
+      <button class="sites-tab is-active" data-tab="rv" type="button">
+        <span class="sites-tab__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="16" height="10" rx="2"/><path d="M18 11h2a2 2 0 012 2v1a2 2 0 01-2 2h-2"/><circle cx="7" cy="18" r="2"/><circle cx="15" cy="18" r="2"/><line x1="2" y1="16" x2="5" y2="16"/><line x1="17" y1="16" x2="13" y2="16"/></svg>
+        </span>
+        <span class="sites-tab__label">RV Sites</span>
+      </button>
+      <button class="sites-tab" data-tab="cabin" type="button">
+        <span class="sites-tab__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M10 10h4"/></svg>
+        </span>
+        <span class="sites-tab__label">Cabins</span>
+      </button>
+      <button class="sites-tab" data-tab="deluxe" type="button">
+        <span class="sites-tab__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M10 10h4"/><path d="M2 10l10-7 10 7"/></svg>
+        </span>
+        <span class="sites-tab__label">Deluxe Cabins</span>
+      </button>
+      <button class="sites-tab" data-tab="camp" type="button">
+        <span class="sites-tab__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 16v2"/><path d="M8 22l4-6 4 6"/></svg>
+        </span>
+        <span class="sites-tab__label">Camp Sites</span>
+      </button>
+      <div class="sites-tab__slider" aria-hidden="true"></div>
+    </nav>
+  </section>
 
-        {/* Desktop picker (in left column) */}
-        <div class="picker-desktop">
-          <ReserveDatePicker
-            parkSlug="fourwardcast-flippin-ar"
-            d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
-            buttonText="Reserve Now"
-          />
+  <!-- ═══════════════ TAB PANELS ═══════════════ -->
+  <div class="sites-panels">
+
+    <!-- ──── RV SITES ──── -->
+    <article class="sites-panel is-active" data-panel="rv">
+      <div class="panel-grid">
+        <!-- Gallery -->
+        <div class="panel-gallery reveal">
+          <div class="gallery-main">
+            <div class="gallery-placeholder" data-category="rv">
+              <div class="gallery-placeholder__gradient"></div>
+              <svg class="gallery-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="2" y="6" width="16" height="10" rx="2"/><path d="M18 11h2a2 2 0 012 2v1a2 2 0 01-2 2h-2"/><circle cx="7" cy="18" r="2"/><circle cx="15" cy="18" r="2"/></svg>
+              <span class="gallery-placeholder__text">RV Site Photo</span>
+            </div>
+            <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/rv-1.jpg`} alt="Full hookup RV site at FourWardCast" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="rv">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/rv-2.jpg`} alt="RV site view" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="rv">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/rv-3.jpg`} alt="RV hookup detail" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="rv">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/rv-4.jpg`} alt="RV site evening" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+          </div>
         </div>
 
-        <h3>Full Hookup Sites</h3>
+        <!-- Details -->
+        <div class="panel-details">
+          <div class="panel-header reveal">
+            <h2 class="panel-title">Full Hookup RV Sites</h2>
+            <p class="panel-tagline">26 spacious sites with everything you need for a comfortable stay.</p>
+          </div>
 
-        <p>
-          <strong>Best for:</strong> Weekend stays, longer visits, and full-service comfort.
-        </p>
+          <!-- Amenities -->
+          <div class="amenities-grid reveal">
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              15/30/50 Amp Electric
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Water & Sewer
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Pull-Through Available
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Restrooms & Showers
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Picnic Tables
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Fire Rings
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Wi-Fi Access
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Quiet Hours
+            </div>
+          </div>
 
-        <p>
-          15/30/50 amp electric<br />
-          Water + Sewer<br />
-          Pull-through and back-in options
-        </p>
+          <!-- Pricing Cards -->
+          <div class="pricing-row reveal">
+            <div class="price-card">
+              <span class="price-card__period">Daily</span>
+              <span class="price-card__amount"><sup>$</sup>50</span>
+              <span class="price-card__unit">/ night</span>
+            </div>
+            <div class="price-card">
+              <span class="price-card__period">Weekly</span>
+              <span class="price-card__amount"><sup>$</sup>250</span>
+              <span class="price-card__unit">/ week</span>
+            </div>
+            <div class="price-card price-card--featured">
+              <span class="price-card__badge">Best Value</span>
+              <span class="price-card__period">Monthly</span>
+              <span class="price-card__amount"><sup>$</sup>600</span>
+              <span class="price-card__unit">/ month</span>
+              <span class="price-card__save">Save $100</span>
+            </div>
+          </div>
+
+          <p class="pricing-note reveal">Rates based on 1–4 people. Each additional person $5/night. Children under 2 stay free.</p>
+
+          <div class="picker-section reveal">
+            <p class="picker-label">Select your dates & reserve</p>
+            <ReserveDatePicker
+              parkSlug="fourwardcast-flippin-ar"
+              d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+              buttonText="Reserve Now"
+            />
+          </div>
+        </div>
       </div>
+    </article>
 
-      <div class="rvsplit__right">
-        <video
-          src={`${import.meta.env.BASE_URL}assets/images/videos/rvsites2.webm`}
-          autoplay
-          muted
-          loop
-          preload="metadata"
-          class="rvsplit__img"
-        />
-
-        {/* Mobile picker (under image) */}
-        <div class="picker-mobile">
-          <ReserveDatePicker
-            parkSlug="fourwardcast-flippin-ar"
-            d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
-            buttonText="Reserve Now"
-          />
+    <!-- ──── CABINS ──── -->
+    <article class="sites-panel" data-panel="cabin">
+      <div class="panel-grid">
+        <div class="panel-gallery reveal">
+          <div class="gallery-main">
+            <div class="gallery-placeholder" data-category="cabin">
+              <div class="gallery-placeholder__gradient"></div>
+              <svg class="gallery-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M10 10h4"/></svg>
+              <span class="gallery-placeholder__text">Cabin Photo</span>
+            </div>
+            <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/cabin-1.jpg`} alt="Cozy cabin at FourWardCast" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="cabin">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/cabin-2.jpg`} alt="Cabin interior" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="cabin">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/cabin-3.jpg`} alt="Cabin porch" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="cabin">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/cabin-4.jpg`} alt="Cabin surroundings" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+          </div>
         </div>
+
+        <div class="panel-details">
+          <div class="panel-header reveal">
+            <h2 class="panel-title">Cabins</h2>
+            <p class="panel-tagline">Simple, rustic comfort — a roof over your head and nature right outside the door.</p>
+          </div>
+
+          <div class="amenities-grid reveal">
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              A/C Unit
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Furnished Interior
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Covered Porch
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Picnic Table
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Fire Ring
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Full Bathroom
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Wi-Fi Access
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Parking
+            </div>
+          </div>
+
+          <div class="pricing-row reveal">
+            <div class="price-card">
+              <span class="price-card__period">Daily</span>
+              <span class="price-card__amount"><sup>$</sup>25</span>
+              <span class="price-card__unit">/ night</span>
+            </div>
+            <div class="price-card price-card--featured">
+              <span class="price-card__badge">Best Value</span>
+              <span class="price-card__period">Weekly</span>
+              <span class="price-card__amount"><sup>$</sup>100</span>
+              <span class="price-card__unit">/ week</span>
+              <span class="price-card__save">Save $75</span>
+            </div>
+          </div>
+
+          <p class="pricing-note reveal">Cabins can fit up to 4 guest. Each pet incurs a charge of $5/night. Contact us for extended stay rates.</p>
+
+          <div class="picker-section reveal">
+            <p class="picker-label">Select your dates & reserve</p>
+            <ReserveDatePicker
+              parkSlug="fourwardcast-flippin-ar"
+              d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+              buttonText="Reserve Now"
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ──── DELUXE CABINS ──── -->
+    <article class="sites-panel" data-panel="deluxe">
+      <div class="panel-grid">
+        <div class="panel-gallery reveal">
+          <div class="gallery-main">
+            <div class="gallery-placeholder" data-category="deluxe">
+              <div class="gallery-placeholder__gradient"></div>
+              <svg class="gallery-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M10 10h4"/><path d="M2 10l10-7 10 7"/></svg>
+              <span class="gallery-placeholder__text">Deluxe Cabin Photo</span>
+            </div>
+            <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/deluxe-1.jpg`} alt="Deluxe cabin at FourWardCast" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="deluxe">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/deluxe-2.jpg`} alt="Deluxe cabin interior" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="deluxe">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/deluxe-3.jpg`} alt="Deluxe cabin bathroom" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="deluxe">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/deluxe-4.jpg`} alt="Deluxe cabin deck" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-details">
+          <div class="panel-header reveal">
+            <h2 class="panel-title">Deluxe Cabins</h2>
+            <p class="panel-tagline">Our premium getaway — all the comforts of home surrounded by Ozark beauty.</p>
+          </div>
+
+          <div class="amenities-grid reveal">
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              AC Unit
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Full Kitchen
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Full Bathroom
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Furnished Interior
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Picnic Table
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Fire Ring & Grill
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Wi-Fi Access
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Dedicated Parking
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Walking Distance to Lake
+            </div>
+          </div>
+
+          <div class="pricing-row reveal">
+            <div class="price-card">
+              <span class="price-card__period">Daily</span>
+              <span class="price-card__amount"><sup>$</sup>100</span>
+              <span class="price-card__unit">/ night</span>
+            </div>
+            <div class="price-card price-card--featured">
+              <span class="price-card__badge">Best Value</span>
+              <span class="price-card__period">Weekly</span>
+              <span class="price-card__amount"><sup>$</sup>400</span>
+              <span class="price-card__unit">/ week</span>
+              <span class="price-card__save">Save $300</span>
+            </div>
+          </div>
+
+          <p class="pricing-note reveal">Cabins can fit up to 4 guest. Each pet incurs a charge of $5/night. Contact us for extended stay rates.</p>
+
+          <div class="picker-section reveal">
+            <p class="picker-label">Select your dates & reserve</p>
+            <ReserveDatePicker
+              parkSlug="fourwardcast-flippin-ar"
+              d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+              buttonText="Reserve Now"
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ──── CAMP SITES ──── -->
+    <article class="sites-panel" data-panel="camp">
+      <div class="panel-grid">
+        <div class="panel-gallery reveal">
+          <div class="gallery-main">
+            <div class="gallery-placeholder" data-category="camp">
+              <div class="gallery-placeholder__gradient"></div>
+              <svg class="gallery-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 16v2"/><path d="M8 22l4-6 4 6"/></svg>
+              <span class="gallery-placeholder__text">Camp Site Photo</span>
+            </div>
+            <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/camp-1.jpg`} alt="Tent camping at FourWardCast" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="camp">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/camp-2.jpg`} alt="Camp site setup" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="camp">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/camp-3.jpg`} alt="Camp fire area" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+            <div class="gallery-thumb">
+              <div class="gallery-placeholder gallery-placeholder--sm" data-category="camp">
+                <div class="gallery-placeholder__gradient"></div>
+              </div>
+              <img class="gallery-img" src={`${import.meta.env.BASE_URL}assets/images/sites/camp-4.jpg`} alt="Tent site morning" loading="lazy" style="display:none" onload="this.style.display='block';this.previousElementSibling.style.display='none'"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-details">
+          <div class="panel-header reveal">
+            <h2 class="panel-title">(Coming Soon)</h2>
+            <p class="panel-tagline">Get back to basics. Flat ground, shade trees, and nothing between you and the stars.</p>
+          </div>
+
+          <div class="amenities-grid reveal">
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Level Tent Pads
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Fire Ring
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Picnic Table
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Restrooms & Showers
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-1)"></span>
+              Water Nearby
+            </div>
+            <div class="amenity-chip">
+              <span class="amenity-chip__dot" style="background:var(--theme-surface-2)"></span>
+              Shade Trees
+            </div>
+          </div>
+
+          <div class="pricing-row reveal">
+            <div class="price-card price-card--featured">
+              <span class="price-card__badge">Simple & Affordable</span>
+              <span class="price-card__period">Daily</span>
+              <span class="price-card__amount"><sup>$</sup>25</span>
+              <span class="price-card__unit">/ night</span>
+            </div>
+            <div class="price-card">
+              <span class="price-card__period">Weekly</span>
+              <span class="price-card__amount"><sup>$</sup>150</span>
+              <span class="price-card__unit">/ week</span>
+              <span class="price-card__save">Save $25</span>
+            </div>
+          </div>
+
+          <p class="pricing-note reveal">Rates based on 1–4 people. Each additional person $5/night. Children under 2 stay free.</p>
+
+          <div class="picker-section reveal">
+            <p class="picker-label">Select your dates & reserve</p>
+            <ReserveDatePicker
+              parkSlug="fourwardcast-flippin-ar"
+              d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+              buttonText="Reserve Now"
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ═══════════════ CONTACT CTA ═══════════════ -->
+  <section class="sites-cta reveal">
+    <div class="sites-cta__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,0 L0,40 C240,80 480,20 720,60 C960,100 1200,30 1440,60 L1440,0 Z" fill="var(--theme-bg)" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="sites-cta__inner">
+      <h2 class="sites-cta__title">Need help choosing?</h2>
+      <p class="sites-cta__text">We're happy to help you find the perfect spot. Reach out anytime.</p>
+      <div class="sites-cta__actions">
+        <a class="sites-cta__btn" href="tel:+13273245000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (327) 324-5000
+        </a>
+        <a class="sites-cta__btn sites-cta__btn--secondary" href="mailto:reservations@fourwardcast.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Us
+        </a>
       </div>
     </div>
-
-    <hr />
-
-    <h3>What’s included with every RV stay</h3>
-    <ul>
-      <li>Restrooms / showers</li>
-      <li>Wi-Fi <em>(currently being rolled out)</em></li>
-      <li>Picnic tables</li>
-      <li>Fire rings</li>
-      <li>Quiet hours and family-friendly atmosphere</li>
-    </ul>
-
-    <hr />
-
-    <h3>Pricing</h3> 
-    <ul>
-      <li><strong>Daily</strong> $50</li>
-      <li><strong>Weekly</strong> $250</li>
-      <li><strong>Monthly</strong> $600</li>
-    </ul>
-      Rates based on 1 - 4 people. Each additional person is $5/night.
-      Children under 2 are free.
-    <hr />
-
-    <h3>Need help picking a site?</h3>
-    <p>
-      Call or text: <strong>(327) 324-5000</strong><br />
-      Or email:
-      <a href="mailto:reservations@fourwardcast.com">reservations@fourwardcast.com</a>
-    </p>
-  </TextSection>
-  </div>
+  </section>
 </Layout>
 
+<!-- ═══════════════ CLIENT SCRIPT ═══════════════ -->
+<script is:inline>
+(function() {
+  /* ── Tab Switching ── */
+  const tabs = document.querySelectorAll('.sites-tab');
+  const panels = document.querySelectorAll('.sites-panel');
+  const slider = document.querySelector('.sites-tab__slider');
+
+  function positionSlider(tab) {
+    if (!slider || !tab) return;
+    slider.style.width = tab.offsetWidth + 'px';
+    slider.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+  }
+
+  function switchTab(targetId) {
+    tabs.forEach(function(t) { t.classList.remove('is-active'); });
+    panels.forEach(function(p) {
+      if (p.dataset.panel === targetId) {
+        p.classList.add('is-active');
+        /* Re-trigger reveal animations inside new panel */
+        p.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.remove('is-visible');
+          void el.offsetWidth; /* force reflow */
+          el.classList.add('is-visible');
+        });
+      } else {
+        p.classList.remove('is-active');
+      }
+    });
+    var activeTab = document.querySelector('.sites-tab[data-tab="' + targetId + '"]');
+    if (activeTab) {
+      activeTab.classList.add('is-active');
+      positionSlider(activeTab);
+    }
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      switchTab(tab.dataset.tab);
+      /* Scroll panels into view smoothly */
+      var panelsWrap = document.querySelector('.sites-panels');
+      if (panelsWrap) {
+        panelsWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* Position slider on load and resize */
+  function initSlider() {
+    var active = document.querySelector('.sites-tab.is-active');
+    if (active) positionSlider(active);
+  }
+  initSlider();
+  window.addEventListener('resize', initSlider);
+
+  /* ── Scroll-triggered reveal ── */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    /* If reduced motion or no IO, show everything immediately */
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
+})();
+</script>
 
 <style>
-  /* Split layout (text left, image right) */
-.rvsplit {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
-}
-
-.rvsplit__left {
-  flex: 1 1 320px;
-  min-width: 280px;
-}
-
-.rvsplit__right {
-  flex: 0 1 420px;
-  min-width: 280px;
-}
-
-.rvsplit__img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
-}
-
-/* Picker placement: desktop shows in left column, mobile shows under image */
-.picker-desktop {
-  display: block;
-  margin: 1rem 0 1.25rem;
-}
-
-.picker-mobile {
-  display: none;
-  margin: 1rem 0 0;
-}
-
-/* Mobile: stack content nicely and show picker under image */
-@media (max-width: 640px) {
-  .picker-desktop {
-    display: none;
+  /* ════════════════════════════════════════
+     REVEAL ANIMATION BASE
+     ════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .picker-mobile {
+  /* Stagger children */
+  .amenities-grid.is-visible .amenity-chip,
+  .pricing-row.is-visible .price-card {
+    animation: chipIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .amenities-grid.is-visible .amenity-chip:nth-child(1) { animation-delay: 0.04s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(2) { animation-delay: 0.08s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(3) { animation-delay: 0.12s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(4) { animation-delay: 0.16s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(5) { animation-delay: 0.20s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(6) { animation-delay: 0.24s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(7) { animation-delay: 0.28s; }
+  .amenities-grid.is-visible .amenity-chip:nth-child(8) { animation-delay: 0.32s; }
+
+  .pricing-row.is-visible .price-card:nth-child(1) { animation-delay: 0.06s; }
+  .pricing-row.is-visible .price-card:nth-child(2) { animation-delay: 0.14s; }
+  .pricing-row.is-visible .price-card:nth-child(3) { animation-delay: 0.22s; }
+
+  @keyframes chipIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ */
+  .sites-hero {
+    position: relative;
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    overflow: hidden;
+    text-align: center;
+  }
+  .sites-hero__topo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .sites-hero__topo svg {
+    width: 100%;
+    height: auto;
     display: block;
   }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .rvsitespage {
-    animation: rvEnter 600ms cubic-bezier(.2,.8,.2,1) both;
+  .sites-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .sites-hero__eyebrow {
+    font-family: var(--theme-font-family-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  .sites-hero__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+  }
+  .sites-hero__accent {
+    color: var(--theme-surface-1);
+  }
+  .sites-hero__sub {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 
-  @keyframes rvEnter {
-    from { opacity: 0; transform: translateY(10px); }
+  /* ════════════════════════════════════════
+     TABS
+     ════════════════════════════════════════ */
+  .sites-tabs-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1rem 1rem;
+  }
+  .sites-tabs {
+    position: relative;
+    display: inline-flex;
+    gap: 0;
+    background: rgba(81, 69, 38, 0.08);
+    border-radius: 999px;
+    padding: 5px;
+  }
+  .sites-tab {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--theme-on-bg);
+    border-radius: 999px;
+    transition: color 0.35s ease;
+    white-space: nowrap;
+  }
+  .sites-tab.is-active {
+    color: var(--theme-on-primary);
+  }
+  .sites-tab__icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .sites-tab__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .sites-tab__slider {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: calc(100% - 10px);
+    background: var(--theme-primary);
+    border-radius: 999px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+    box-shadow: 0 2px 12px rgba(81, 69, 38, 0.25);
+  }
+
+  /* ════════════════════════════════════════
+     PANELS
+     ════════════════════════════════════════ */
+  .sites-panels {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 1rem clamp(1rem, 3vw, 2rem) 2rem;
+    scroll-margin-top: 1rem;
+  }
+  .sites-panel {
+    display: none;
+  }
+  .sites-panel.is-active {
+    display: block;
+    animation: panelIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-}
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+    margin-top: 1.5rem;
+  }
 
+  /* ════════════════════════════════════════
+     GALLERY & PLACEHOLDERS
+     ════════════════════════════════════════ */
+  .gallery-main {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    position: relative;
+  }
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+  }
+  .gallery-thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    position: relative;
+  }
+
+  /* Placeholder treatments */
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-placeholder__gradient {
+    position: absolute;
+    inset: 0;
+    opacity: 0.9;
+  }
+  /* RV = warm brown-orange gradient */
+  [data-category="rv"] .gallery-placeholder__gradient {
+    background: linear-gradient(135deg, #8b7355 0%, #a0845c 40%, #c9956b 100%);
+  }
+  /* Cabin = deep forest tones */
+  [data-category="cabin"] .gallery-placeholder__gradient {
+    background: linear-gradient(135deg, #5a6b4f 0%, #7a8c5e 40%, #a4b07a 100%);
+  }
+  /* Deluxe = rich warm gold */
+  [data-category="deluxe"] .gallery-placeholder__gradient {
+    background: linear-gradient(135deg, #6b5630 0%, #8c7340 40%, #c4a55a 100%);
+  }
+  /* Camp = dusky purple-brown */
+  [data-category="camp"] .gallery-placeholder__gradient {
+    background: linear-gradient(135deg, #6b5b5a 0%, #8a7268 40%, #b09e8a 100%);
+  }
+  .gallery-placeholder__icon {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    color: rgba(255,255,255,0.5);
+  }
+  .gallery-placeholder--sm .gallery-placeholder__icon {
+    width: 28px;
+    height: 28px;
+  }
+  .gallery-placeholder__text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Subtle animated grain on placeholders */
+  .gallery-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 180px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Topographic contour lines on the main placeholder */
+  .gallery-main .gallery-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.12;
+    background-image:
+      repeating-radial-gradient(circle at 30% 60%, transparent 0, transparent 38px, rgba(255,255,255,0.4) 39px, transparent 40px),
+      repeating-radial-gradient(circle at 70% 35%, transparent 0, transparent 52px, rgba(255,255,255,0.3) 53px, transparent 54px);
+  }
+
+  /* ════════════════════════════════════════
+     PANEL DETAILS
+     ════════════════════════════════════════ */
+  .panel-header {
+    margin-bottom: 1.5rem;
+  }
+  .panel-title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--theme-on-bg);
+  }
+  .panel-tagline {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════
+     AMENITY CHIPS
+     ════════════════════════════════════════ */
+  .amenities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .amenity-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.9rem;
+    background: rgba(81, 69, 38, 0.06);
+    border-radius: 999px;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--theme-on-bg);
+    border: 1px solid rgba(81, 69, 38, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .amenity-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(81, 69, 38, 0.1);
+  }
+  .amenity-chip__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ════════════════════════════════════════
+     PRICING CARDS
+     ════════════════════════════════════════ */
+  .pricing-row {
+    display: flex;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .price-card {
+    flex: 1 1 140px;
+    min-width: 130px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.4rem 1rem 1.2rem;
+    background: #fff;
+    border-radius: 18px;
+    border: 1.5px solid rgba(81, 69, 38, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .price-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(81, 69, 38, 0.1);
+  }
+  .price-card--featured {
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    border-color: var(--theme-primary);
+    box-shadow: 0 4px 20px rgba(81, 69, 38, 0.2);
+    transform: scale(1.04);
+  }
+  .price-card--featured:hover {
+    transform: scale(1.04) translateY(-3px);
+    box-shadow: 0 8px 28px rgba(81, 69, 38, 0.25);
+  }
+  .price-card__badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.2rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--theme-surface-1);
+    color: #fff;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .price-card__period {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 0.3rem;
+  }
+  .price-card__amount {
+    font-family: var(--theme-font-family-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .price-card__amount sup {
+    font-size: 0.5em;
+    position: relative;
+    top: -0.4em;
+  }
+  .price-card__unit {
+    font-size: 0.78rem;
+    opacity: 0.6;
+    margin-top: 0.15rem;
+  }
+  .price-card__save {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.2);
+  }
+  .price-card:not(.price-card--featured) .price-card__save {
+    background: var(--theme-surface-2);
+    color: var(--theme-on-surface-2);
+  }
+
+  .pricing-note {
+    font-size: 0.82rem;
+    opacity: 0.6;
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+  }
+
+  /* ════════════════════════════════════════
+     PICKER SECTION
+     ════════════════════════════════════════ */
+  .picker-section {
+    padding-top: 0.5rem;
+  }
+  .picker-label {
+    font-family: var(--theme-font-family-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    color: var(--theme-on-bg);
+  }
+
+  /* ════════════════════════════════════════
+     CONTACT CTA
+     ════════════════════════════════════════ */
+  .sites-cta {
+    position: relative;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    text-align: center;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem);
+    padding-bottom: calc(clamp(3rem, 6vw, 4rem) + var(--theme-shape-radius));
+    margin-top: 3rem;
+    margin-bottom: calc(-1 * var(--theme-shape-radius));
+    overflow: hidden;
+  }
+  .sites-cta__topo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .sites-cta__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .sites-cta__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .sites-cta__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  .sites-cta__text {
+    opacity: 0.8;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  .sites-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .sites-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--theme-button-border-radius);
+    text-decoration: none;
+    font-family: var(--theme-font-family-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--theme-surface-1);
+    color: #fff;
+    transition: transform var(--theme-transition), filter var(--theme-transition);
+  }
+  .sites-cta__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+  .sites-cta__btn--secondary {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+     ════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .panel-grid {
+      grid-template-columns: 1fr;
+    }
+    .panel-gallery {
+      max-width: 560px;
+    }
+  }
+  @media (max-width: 600px) {
+    .sites-tab__label {
+      font-size: 0.82rem;
+    }
+    .sites-tab {
+      padding: 0.65rem 0.9rem;
+      gap: 0.35rem;
+    }
+    .sites-tab__icon {
+      width: 18px;
+      height: 18px;
+    }
+    .pricing-row {
+      gap: 0.6rem;
+    }
+    .price-card {
+      padding: 1.2rem 0.75rem 1rem;
+    }
+    .price-card__amount {
+      font-size: 1.8rem;
+    }
+    .price-card--featured {
+      transform: scale(1.02);
+    }
+    .price-card--featured:hover {
+      transform: scale(1.02) translateY(-3px);
+    }
+  }
+
+  /* ════════════════════════════════════════
+     REDUCED MOTION
+     ════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .sites-panel.is-active { animation: none; }
+    .amenities-grid.is-visible .amenity-chip,
+    .pricing-row.is-visible .price-card { animation: none; }
+    .sites-tab__slider { transition: none; }
+  }
 </style>
