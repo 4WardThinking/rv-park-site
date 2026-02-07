@@ -1,29 +1,88 @@
 ---
-import {Icon} from 'astro-icon/components'
-import {Button, FormInput } from "@components/odyssey-theme";
-
+/**
+ * Buttondown newsletter subscribe form.
+ * Replace YOUR_USERNAME below with your Buttondown username.
+ * Create a free account at https://buttondown.com
+ */
+const BUTTONDOWN_USERNAME = "FourWardCast";
 ---
 
-<form name="Newsletter Form" method="POST" action="/newsletter-thank-you">
-  <div class="newsletter-form__container">
-    <FormInput name="Email" placeholder="hello@example.com"/>
-    <Button customIcon>Submit
-      <Fragment slot="icon">
-        <Icon name="ic:baseline-chevron-right" />
-      </Fragment>
-    </Button>
-  </div>
+<form
+  class="newsletter-form"
+  action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
+  method="POST"
+  target="popupwindow"
+>
+  <input
+    class="newsletter-form__input"
+    type="email"
+    name="email"
+    placeholder="your@email.com"
+    required
+  />
+  <button class="newsletter-form__btn" type="submit">Subscribe</button>
 </form>
 
 <style>
-.newsletter-form__container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-}
-@media (max-width: 600px) {
-  .newsletter-form__container {
-    grid-template-columns: 1fr;
+  .newsletter-form {
+    display: flex;
+    max-width: 440px;
+    gap: 0;
   }
-}
+  .newsletter-form__input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(81, 69, 38, 0.18);
+    border-right: 0;
+    border-radius: 999px 0 0 999px;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    background: #fff;
+    color: var(--theme-on-bg);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .newsletter-form__input::placeholder {
+    color: rgba(81, 69, 38, 0.35);
+  }
+  .newsletter-form__input:focus {
+    border-color: var(--theme-surface-1);
+    box-shadow: 0 0 0 3px rgba(255, 134, 48, 0.12);
+  }
+  .newsletter-form__btn {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 0 999px 999px 0;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+  .newsletter-form__btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-form {
+      flex-wrap: wrap;
+    }
+    .newsletter-form__input {
+      width: 100%;
+      border-right: 1.5px solid rgba(81, 69, 38, 0.18);
+      border-radius: 999px;
+    }
+    .newsletter-form__input:focus {
+      border-right-color: var(--theme-surface-1);
+    }
+    .newsletter-form__btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      border-radius: 999px;
+    }
+  }
 </style>

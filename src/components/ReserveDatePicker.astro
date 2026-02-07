@@ -81,7 +81,7 @@ const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
   function initPicker() {
     var Litepicker = window.Litepicker;
     if (!Litepicker) { return; }
-    var isMobile = window.matchMedia("(max-width: 640px)").matches;
+    var isMobile = window.matchMedia("(max-width: 900px)").matches;
     new Litepicker({
       element: input,
       singleMode: false,
@@ -137,6 +137,12 @@ const baseUrl = `https://www.roverpass.com/c/${parkSlug}/booking/`;
 
   .reserve-button:hover {
     background: rgb(80, 86, 53);
+  }
+
+  /* Prevent Litepicker dropdown from overflowing viewport */
+  :global(.litepicker) {
+    max-width: 100vw;
+    overflow-x: auto;
   }
 
   @media (max-width: 520px) {

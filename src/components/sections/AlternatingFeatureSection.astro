@@ -56,7 +56,7 @@ const {
 } = Astro.props;
 ---
 
-<section class={`alt-feature ${reverse ? "alt-feature--reverse" : ""}`}>
+<section class={`alt-feature reveal ${reverse ? "alt-feature--reverse" : ""}`}>
   <div class="alt-feature__media">
     {mediaType === "embed" ? (
       <div class={`alt-feature__embed alt-feature__embed--${embedMode}`}>
@@ -280,6 +280,11 @@ const {
     .alt-feature__media {
       order: 0 !important;
       height: clamp(260px, 52vw, 420px);
+    }
+
+    .alt-feature__cta {
+      display: block;
+      text-align: center;
     }
   }
 </style>

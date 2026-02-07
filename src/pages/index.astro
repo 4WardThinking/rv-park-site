@@ -18,7 +18,7 @@ import AlternatingFeatureSection from '../components/sections/AlternatingFeature
 			mediaSrc={`${import.meta.env.BASE_URL}assets/images/home/ariellakeview.jpg`}
 			mediaAlt="Outdoor recreation near Bull Shoals Lake"
 			ctaText="View Activities"
-			ctaHref="/rv-park-site/amenities/"
+			ctaHref={`${import.meta.env.BASE_URL}amenities/`}
 			bullets={[
 				{ icon: "mdi:sail-boat", title: "Boating", text: "Cruise, float, or anchor out and take in the lake views." },
 				{ icon: "mdi:fish", title: "Fishing", text: "Try your luck in nearby waters known for great fishing." },
@@ -34,7 +34,7 @@ import AlternatingFeatureSection from '../components/sections/AlternatingFeature
 			mediaAlt="Campground relaxation"
 			reverse
 			ctaText="Learn More"
-			ctaHref="/rv-park-site/sites/"
+			ctaHref={`${import.meta.env.BASE_URL}sites/`}
 			bullets={[
 				{ icon: "mdi:road-variant", title: "Scenic Drives", text: "Explore backroads and overlooks for classic Ozarks views." },
 				{ icon: "mdi:pool", title: "Swimming", text: "Cool off with a swim and a little sun by the pool." },
@@ -42,72 +42,145 @@ import AlternatingFeatureSection from '../components/sections/AlternatingFeature
 			]}
 		/>
 	</Container>
+
+	<!-- ═══════════════ CTA ═══════════════ -->
+	<section class="home-cta reveal">
+		<div class="home-cta__topo" aria-hidden="true">
+			<svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+				<path d="M0,0 L0,40 C240,80 480,20 720,60 C960,100 1200,30 1440,60 L1440,0 Z" fill="var(--theme-bg)" opacity="0.5"/>
+			</svg>
+		</div>
+		<div class="home-cta__inner">
+			<h2 class="home-cta__title">Find your perfect spot</h2>
+			<p class="home-cta__text">Browse our RV sites, cabins, and camp sites to plan your next trip.</p>
+			<div class="home-cta__actions">
+				<a class="home-cta__btn" href={`${import.meta.env.BASE_URL}sites/`}>
+					View Sites & Cabins
+				</a>
+				<a class="home-cta__btn home-cta__btn--secondary" href={`${import.meta.env.BASE_URL}company/contact/`}>
+					Contact Us
+				</a>
+			</div>
+		</div>
+	</section>
 </Layout>
 
+<!-- ═══════════════ CLIENT SCRIPT ═══════════════ -->
+<script is:inline>
+(function() {
+	var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	if (!prefersReduced && 'IntersectionObserver' in window) {
+		var observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+				}
+			});
+		}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+		document.querySelectorAll('.reveal').forEach(function(el) {
+			observer.observe(el);
+		});
+	} else {
+		document.querySelectorAll('.reveal').forEach(function(el) {
+			el.classList.add('is-visible');
+		});
+	}
+})();
+</script>
+
 <style>
-	.feature-card__section {
-		margin: var(--section-margin) auto;
+	/* ════════════════════════════════════════
+	   REVEAL ANIMATION
+	   ════════════════════════════════════════ */
+	:global(.reveal) {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+					transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	:global(.reveal.is-visible) {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
-	/* Lake + Map grid */
-	.lake-map__grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: var(--theme-grid-gap);
-		align-items: start;
-	}
-
-	.lake-card,
-	.map-card {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 1.25rem;
-		border-radius: 28px;
-	}
-
-	.lake-widget__frame-wrap,
-	.map__frame-wrap {
-		width: min(560px, 100%);
-		aspect-ratio: 420 / 380;
-		border-radius: 18px;
+	/* ════════════════════════════════════════
+	   CTA
+	   ════════════════════════════════════════ */
+	.home-cta {
+		position: relative;
+		background: var(--theme-primary);
+		color: var(--theme-on-primary);
+		text-align: center;
+		padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem);
+		padding-bottom: calc(clamp(3rem, 6vw, 4rem) + var(--theme-shape-radius));
+		margin-bottom: calc(-1 * var(--theme-shape-radius));
 		overflow: hidden;
-		background: rgba(0, 0, 0, 0.06);
 	}
-
-	.lake-widget__frame,
-	.map__frame {
+	.home-cta__topo {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		line-height: 0;
+	}
+	.home-cta__topo svg {
 		width: 100%;
-		height: 100%;
-		border: 0;
+		height: auto;
 		display: block;
 	}
-
-	.map__actions {
+	.home-cta__inner {
+		position: relative;
+		z-index: 1;
+		max-width: 520px;
+		margin: 0 auto;
+	}
+	.home-cta__title {
+		font-family: var(--theme-font-family-serif);
+		font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+		font-weight: 700;
+		margin: 0 0 0.75rem;
+	}
+	.home-cta__text {
+		opacity: 0.8;
+		margin: 0 0 1.5rem;
+		line-height: 1.5;
+	}
+	.home-cta__actions {
 		display: flex;
 		justify-content: center;
-		margin-top: 12px;
+		gap: 0.85rem;
+		flex-wrap: wrap;
 	}
-
-	.map__link {
-		font-weight: 800;
+	.home-cta__btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.85rem 1.6rem;
+		border-radius: var(--theme-button-border-radius);
 		text-decoration: none;
-		color: var(--theme-primary);
+		font-family: var(--theme-font-family-sans);
+		font-weight: 700;
+		font-size: 0.95rem;
+		background: var(--theme-surface-1);
+		color: #fff;
+		transition: transform var(--theme-transition), filter var(--theme-transition);
+	}
+	.home-cta__btn:hover {
+		transform: translateY(-2px);
+		filter: brightness(1.08);
+	}
+	.home-cta__btn--secondary {
+		background: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(4px);
+		border: 1.5px solid rgba(255, 255, 255, 0.3);
 	}
 
-	.blank-space {
-		height: 3rem;
-	}
-
-	@media (max-width: 900px) {
-		.lake-map__grid {
-			grid-template-columns: 1fr;
-		}
-
-		.lake-widget__frame-wrap,
-		.map__frame-wrap {
-			width: min(680px, 100%);
-		}
+	/* ════════════════════════════════════════
+	   REDUCED MOTION
+	   ════════════════════════════════════════ */
+	@media (prefers-reduced-motion: reduce) {
+		:global(.reveal) { opacity: 1; transform: none; transition: none; }
 	}
 </style>

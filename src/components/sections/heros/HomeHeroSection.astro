@@ -1,103 +1,178 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Container, Button } from '@components/odyssey-theme';
-import settings from '../../../config/settings.js';
-import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 import ReserveDatePicker from "../../ReserveDatePicker.astro";
 import "litepicker/dist/css/litepicker.css";
 ---
 
-<Container>
-	<section class="hero-section__section">
-		<div class="hero-section__text">
-				<h1 style="text-align: center;">Welcome to FourWardCast Family Campground and Cabins</h1>
-				<p>
-					A veteran owned, and family operated outdoor camping business located at Bull Shoals Lake in the Ozark Mountains of Arkansas.
-				</p>
-				<ReserveDatePicker parkSlug="fourwardcast-flippin-ar"
-				d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5" buttonText="Reserve Now">
-				</div>
+<section class="home-hero">
+	<div class="home-hero__topo" aria-hidden="true">
+		<svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+			<path d="M0,160 C180,80 360,240 540,160 C720,80 900,240 1080,160 C1200,100 1320,200 1440,160 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.3"/>
+			<path d="M0,200 C200,140 400,260 600,200 C800,140 1000,260 1200,200 C1320,160 1380,230 1440,200 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.5"/>
+			<path d="M0,260 C240,220 480,300 720,260 C960,220 1200,300 1440,260 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.8"/>
+		</svg>
+	</div>
+
+	<div class="home-hero__inner">
+		<div class="home-hero__text">
+			<p class="home-hero__eyebrow" style="text-align: center;">Veteran-Owned &middot; Family-Operated</p>
+			<h1 class="home-hero__title" style="text-align: center;">
+				Welcome to<br/><span class="home-hero__accent">FourWardCast</span> Family Campground and Cabins
+			</h1>
+			<p class="home-hero__sub" style="text-align: center;">
+				A family operated campground on Bull Shoals Lake in the Ozark Mountains of Arkansas.
+			</p>
+			<div class="home-hero__picker">
+				<ReserveDatePicker
+					parkSlug="fourwardcast-flippin-ar"
+					d="5f5b6ce3-89da-4cb3-b8d4-6a2688b9c0d5"
+					buttonText="Reserve Now"
+				/>
+			</div>
 		</div>
-		<div class="hero-media">
+
+		<div class="home-hero__media">
 			<video
 				src={`${import.meta.env.BASE_URL}assets/images/videos/rotatingcampground.webm`}
-				class="hero-media__video"
+				class="home-hero__video"
 				autoplay
 				loop
 				muted
 				playsinline
 			></video>
-				<div class="hero-media__caption-wrap">
-				<Button class="hero-media__caption" href="https://maps.app.goo.gl/smvvWWbrDQep9JmX6">
-					76 Marion County 8119, Flippin, Arkansas 72634
-				</Button>
-				</div>
+			<a class="home-hero__address" href="https://maps.app.goo.gl/smvvWWbrDQep9JmX6" target="_blank" rel="noopener noreferrer">
+				<Icon name="mdi:map-marker" width={16} height={16} />
+				76 Marion County 8119, Flippin, AR 72634
+			</a>
 		</div>
-	</section>
-</Container>
+	</div>
+</section>
 
 <style>
-	.hero-section__section {
-		margin: var(--section-margin) auto;
-		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		gap: 1rem;
+	.home-hero {
+		position: relative;
+		background: var(--theme-primary);
+		color: var(--theme-on-primary);
+		overflow: hidden;
+		padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem);
 	}
-	.hero-section__text {
-		justify-self: center;
-		max-width: 25rem;
+
+	.home-hero__topo {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		line-height: 0;
 	}
-	.hero-btns__container {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-	.hero-btns__container {
-		margin-right: 1rem;
-	}
-	.hero-section__image {
-		display: flex;
-	}
-	.hero-section__image img {
+	.home-hero__topo svg {
 		width: 100%;
-		height: 100%;
-		max-height: 80vh;
+		height: auto;
+		display: block;
+	}
+
+	.home-hero__inner {
+		position: relative;
+		z-index: 1;
+		max-width: var(--container-max-width, 1200px);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1.15fr;
+		gap: clamp(1.5rem, 3vw, 3rem);
+		align-items: center;
+	}
+
+	/* ── Text column ── */
+	.home-hero__text {
+		max-width: 520px;
+	}
+
+	.home-hero__eyebrow {
+		font-family: var(--theme-font-family-sans);
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-size: 0.8rem;
+		opacity: 0.7;
+		margin-bottom: 1rem;
+	}
+
+	.home-hero__title {
+		font-family: var(--theme-font-family-serif);
+		font-size: clamp(2.2rem, 5vw, 3.6rem);
+		font-weight: 700;
+		line-height: 1.1;
+		margin: 0 0 1rem;
+	}
+
+	.home-hero__accent {
+		color: var(--theme-surface-1);
+	}
+
+	.home-hero__sub {
+		font-size: clamp(1rem, 1.5vw, 1.15rem);
+		opacity: 0.85;
+		line-height: 1.6;
+		margin: 0 0 1.5rem;
+	}
+
+	.home-hero__picker {
+		margin-top: 0.5rem;
+	}
+
+	/* ── Media column ── */
+	.home-hero__media {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.home-hero__video {
+		width: 100%;
+		max-height: min(60vh, 480px);
+		border-radius: 20px;
 		object-fit: cover;
-		border-radius: var(--theme-shape-radius);
-	}
-	.hero-media {
-	width: 100%;
-	max-width: 720px;          /* adjust to taste */
-	margin-left: auto;
-	margin-right: auto;
+		display: block;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 	}
 
-	.hero-media__video {
-	width: 100%;
-	height: min(60vh, 520px);  /* max height cap */
-	border-radius: 24px;       /* match theme */
-	object-fit: cover;         /* crops to fill box nicely */
-	display: block;
+	.home-hero__address {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.55rem 1.1rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(4px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		color: var(--theme-on-primary);
+		font-family: var(--theme-font-family-sans);
+		font-size: 0.82rem;
+		text-decoration: none;
+		transition: background 0.2s ease;
+	}
+	.home-hero__address:hover {
+		background: rgba(255, 255, 255, 0.2);
 	}
 
-	.hero-media__caption-wrap {
-	display: flex;
-	justify-content: center;
-	margin-top: 14px; /* space under video */
-	text-align: center;
-	}
-
-	.hero-media__caption {
-	display: inline-flex;
-	justify-content: center;
-	text-align: center;
-	max-width: 100%;
-	}
-	@media (max-width: 768px) {
-		.hero-section__section {
+	/* ── Responsive ── */
+	@media (max-width: 900px) {
+		.home-hero__inner {
 			grid-template-columns: 1fr;
+			text-align: center;
+		}
+
+		.home-hero__text {
+			max-width: 560px;
+			margin: 0 auto;
+		}
+
+		.home-hero__picker {
+			display: flex;
+			justify-content: center;
+		}
+
+		.home-hero__video {
+			max-height: min(50vh, 380px);
 		}
 	}
 </style>

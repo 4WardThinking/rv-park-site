@@ -1,63 +1,441 @@
 ---
-import ContactForm from '../../components/forms/ContactForm.astro';
 import Layout from '../../layouts/Page.astro';
-import { Container } from '@components/odyssey-theme';
+import ContactForm from '../../components/forms/ContactForm.astro';
+import { Icon } from 'astro-icon/components';
 
 const seo = {
-	title: 'Contact | FourWardCast',
-	description: 'Contact Page for FourWardCast Family Campground and Cabins at Bull Shoals Lake',
+  title: 'Contact | FourWardCast',
+  description: 'Get in touch with FourWardCast Family Campground and Cabins at Bull Shoals Lake.',
 };
 ---
 
-<Layout seo={seo}>
-	<Container>
-		<section class="contact-hero__section">
-			<div class="contact-hero__text-section">
-				<h1>Contact Us</h1>
-				<p>
-					Have a question about booking, cabins, RV sites, or amenities? 
-					Send us a note and we’ll get back to you as soon as we can.
-				</p>
-				<div>
-					<p>
-						<em><a href="tel:8008675309">(327) 324-5000</a></em> • <em
-							><a href="mailto:hello@odysseytheme.com">info@fourwardcast.com</a
-							></em
-						>
-					</p>
-				</div>
-			</div>
-			<div class="col-2__container">
-				<ContactForm />
-			</div>
-		</section>
-	</Container>
+<Layout {seo}>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="contact-hero">
+    <div class="contact-hero__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0,160 C180,80 360,240 540,160 C720,80 900,240 1080,160 C1200,100 1320,200 1440,160 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.3"/>
+        <path d="M0,200 C200,140 400,260 600,200 C800,140 1000,260 1200,200 C1320,160 1380,230 1440,200 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.5"/>
+        <path d="M0,260 C240,220 480,300 720,260 C960,220 1200,300 1440,260 L1440,320 L0,320 Z" fill="var(--theme-bg)" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="contact-hero__content reveal">
+      <p class="contact-hero__eyebrow">FourWardCast Family Campground</p>
+      <h1 class="contact-hero__title">Get In<br/><span class="contact-hero__accent">Touch</span></h1>
+      <p class="contact-hero__sub">Questions about booking, sites, or the campground? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT GRID ═══════════════ -->
+  <section class="contact-main">
+    <div class="contact-main__container">
+
+      <!-- Info column -->
+      <div class="contact-info">
+        <div class="contact-info__card reveal">
+          <div class="contact-info__icon-wrap">
+            <Icon name="mdi:phone" class="contact-info__icon" />
+          </div>
+          <div>
+            <h3 class="contact-info__label">Phone</h3>
+            <a class="contact-info__value" href="tel:+13273245000">(327) 324-5000</a>
+          </div>
+        </div>
+
+        <div class="contact-info__card reveal">
+          <div class="contact-info__icon-wrap">
+            <Icon name="mdi:email-outline" class="contact-info__icon" />
+          </div>
+          <div>
+            <h3 class="contact-info__label">Email</h3>
+            <a class="contact-info__value" href="mailto:info@fourwardcast.com">info@fourwardcast.com</a>
+          </div>
+        </div>
+
+        <div class="contact-info__card reveal">
+          <div class="contact-info__icon-wrap">
+            <Icon name="mdi:map-marker-outline" class="contact-info__icon" />
+          </div>
+          <div>
+            <h3 class="contact-info__label">Address</h3>
+            <p class="contact-info__value">76 Marion County 8119, Flippin, AR 72634</p>
+          </div>
+        </div>
+
+        <div class="contact-info__card reveal">
+          <div class="contact-info__icon-wrap">
+            <Icon name="mdi:clock-outline" class="contact-info__icon" />
+          </div>
+          <div>
+            <h3 class="contact-info__label">Office Hours</h3>
+            <p class="contact-info__value">Mon - Sat: 8am - 6pm</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form column -->
+      <div class="contact-form-wrap reveal">
+        <h2 class="contact-form-wrap__title">Send us a message</h2>
+        <p class="contact-form-wrap__sub">Fill out the form below and we'll get back to you as soon as we can.</p>
+        <ContactForm />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ MAP ═══════════════ -->
+  <section class="contact-map reveal">
+    <div class="contact-map__container">
+      <div class="contact-map__frame-wrap">
+        <iframe
+          class="contact-map__frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.8961459257753!2d-92.62979732418268!3d36.
+		  339066772382274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87ce3b48eec0185d%3A0xbc697a8e266401dc!2sFourWardCast%20Family%20
+		  Campground%20and%20Cabins%20at%20Bull%20Shoals%20Lake!5e0!3m2!1sen!2sus!4v1770428343605!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="FourWardCast Campground Location"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="contact-cta reveal">
+    <div class="contact-cta__topo" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,0 L0,40 C240,80 480,20 720,60 C960,100 1200,30 1440,60 L1440,0 Z" fill="var(--theme-bg)" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="contact-cta__inner">
+      <h2 class="contact-cta__title">Ready to reserve?</h2>
+      <p class="contact-cta__text">Browse our sites and cabins to find the perfect spot.</p>
+      <div class="contact-cta__actions">
+        <a class="contact-cta__btn" href={`${import.meta.env.BASE_URL}sites/`}>
+          View Sites & Cabins
+        </a>
+        <a class="contact-cta__btn contact-cta__btn--secondary" href={`${import.meta.env.BASE_URL}amenities/`}>
+          Amenities
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
 
+<!-- ═══════════════ CLIENT SCRIPT ═══════════════ -->
+<script is:inline>
+(function() {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
+})();
+</script>
+
 <style>
-	.contact-hero__section {
-		margin: var(--section-margin) auto;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		min-height: calc(90vh - var(--navbar-height));
-		gap: 3rem;
-	}
-	.contact-hero__text-section {
-		padding: 2rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		background-color: var(--theme-surface-1);
-		border-radius: var(--theme-shape-radius);
-	}
-	.col-2__container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	@media (max-width: 768px) {
-		.contact-hero__section {
-			grid-template-columns: 1fr;
-		}
-	}
+  /* ════════════════════════════════════════
+     REVEAL ANIMATION
+     ════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ */
+  .contact-hero {
+    position: relative;
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    overflow: hidden;
+    text-align: center;
+  }
+  .contact-hero__topo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .contact-hero__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .contact-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .contact-hero__eyebrow {
+    font-family: var(--theme-font-family-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  .contact-hero__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+  }
+  .contact-hero__accent {
+    color: var(--theme-surface-1);
+  }
+  .contact-hero__sub {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    opacity: 0.85;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ════════════════════════════════════════
+     CONTACT GRID
+     ════════════════════════════════════════ */
+  .contact-main {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .contact-main__container {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+
+  /* ════════════════════════════════════════
+     INFO CARDS
+     ════════════════════════════════════════ */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .contact-info__card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem 1.25rem;
+    background: #fff;
+    border-radius: 16px;
+    border: 1.5px solid rgba(81, 69, 38, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .contact-info__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(81, 69, 38, 0.08);
+  }
+  .contact-info__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    background: rgba(255, 134, 48, 0.1);
+  }
+  .contact-info__icon {
+    width: 22px;
+    height: 22px;
+    color: var(--theme-surface-1);
+  }
+  .contact-info__label {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+    margin: 0 0 0.15rem;
+  }
+  .contact-info__value {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--theme-on-bg);
+    text-decoration: none;
+    margin: 0;
+  }
+  a.contact-info__value:hover {
+    color: var(--theme-surface-1);
+  }
+
+  /* ════════════════════════════════════════
+     FORM WRAP
+     ════════════════════════════════════════ */
+  .contact-form-wrap {
+    background: #fff;
+    border-radius: 24px;
+    border: 1.5px solid rgba(81, 69, 38, 0.08);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .contact-form-wrap__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    margin: 0 0 0.35rem;
+    color: var(--theme-on-bg);
+  }
+  .contact-form-wrap__sub {
+    font-size: 0.92rem;
+    opacity: 0.65;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+
+  /* ════════════════════════════════════════
+     MAP
+     ════════════════════════════════════════ */
+  .contact-map {
+    padding: 0 clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .contact-map__container {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(81, 69, 38, 0.08);
+  }
+  .contact-map__frame-wrap {
+    aspect-ratio: 21 / 9;
+    width: 100%;
+  }
+  .contact-map__frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* ════════════════════════════════════════
+     CTA
+     ════════════════════════════════════════ */
+  .contact-cta {
+    position: relative;
+    background: var(--theme-primary);
+    color: var(--theme-on-primary);
+    text-align: center;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 4rem);
+    padding-bottom: calc(clamp(3rem, 6vw, 4rem) + var(--theme-shape-radius));
+    margin-top: 3rem;
+    margin-bottom: calc(-1 * var(--theme-shape-radius));
+    overflow: hidden;
+  }
+  .contact-cta__topo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+  }
+  .contact-cta__topo svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .contact-cta__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .contact-cta__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  .contact-cta__text {
+    opacity: 0.8;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  .contact-cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .contact-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--theme-button-border-radius);
+    text-decoration: none;
+    font-family: var(--theme-font-family-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--theme-surface-1);
+    color: #fff;
+    transition: transform var(--theme-transition), filter var(--theme-transition);
+  }
+  .contact-cta__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+  .contact-cta__btn--secondary {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* ════════════════════════════════════════
+     RESPONSIVE
+     ════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .contact-main__container {
+      grid-template-columns: 1fr;
+    }
+    .contact-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+    .contact-map__frame-wrap {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  /* ════════════════════════════════════════
+     REDUCED MOTION
+     ════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
 </style>

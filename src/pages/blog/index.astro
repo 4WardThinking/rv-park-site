@@ -103,11 +103,16 @@ const seo = {
     <div class="blog-newsletter__container reveal">
       <h2 class="blog-newsletter__title">Stay in the loop</h2>
       <p class="blog-newsletter__text">Get campground news and updates delivered to your inbox.</p>
-      <form class="blog-newsletter__form" name="Newsletter Form" method="POST" action="/newsletter-thank-you">
+      <form
+        class="blog-newsletter__form"
+        action="https://buttondown.com/api/emails/embed-subscribe/FourWardCast"
+        method="POST"
+        target="popupwindow"
+      >
         <input
           class="blog-newsletter__input"
           type="email"
-          name="Email"
+          name="email"
           placeholder="your@email.com"
           required
         />
