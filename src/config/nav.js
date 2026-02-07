@@ -11,6 +11,10 @@ export const nav = [
 		title: 'Sites & Cabins',
 		slug: 'sites',
 	},
+	{
+		title: 'Activities & Rentals',
+		slug: 'activities',
+	},
 	{ 
 		title: 'Amenities',
 		slug: 'amenities',

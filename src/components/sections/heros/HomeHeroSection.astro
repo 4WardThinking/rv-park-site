@@ -51,9 +51,9 @@ import "litepicker/dist/css/litepicker.css";
 <style>
 	.home-hero {
 		position: relative;
+		z-index: 1;
 		background: var(--theme-primary);
 		color: var(--theme-on-primary);
-		overflow: hidden;
 		padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem);
 	}
 
@@ -63,6 +63,7 @@ import "litepicker/dist/css/litepicker.css";
 		left: 0;
 		right: 0;
 		line-height: 0;
+		overflow: hidden;
 	}
 	.home-hero__topo svg {
 		width: 100%;
