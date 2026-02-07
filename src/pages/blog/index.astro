@@ -98,6 +98,24 @@ const seo = {
     </div>
   </section>
 
+  <!-- ═══════════════ NEWSLETTER ═══════════════ -->
+  <section class="blog-newsletter">
+    <div class="blog-newsletter__container reveal">
+      <h2 class="blog-newsletter__title">Stay in the loop</h2>
+      <p class="blog-newsletter__text">Get campground news and updates delivered to your inbox.</p>
+      <form class="blog-newsletter__form" name="Newsletter Form" method="POST" action="/newsletter-thank-you">
+        <input
+          class="blog-newsletter__input"
+          type="email"
+          name="Email"
+          placeholder="your@email.com"
+          required
+        />
+        <button class="blog-newsletter__btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
   <!-- ═══════════════ CTA ═══════════════ -->
   <section class="blog-cta reveal">
     <div class="blog-cta__topo" aria-hidden="true">
@@ -367,6 +385,78 @@ const seo = {
   }
 
   /* ════════════════════════════════════════
+     NEWSLETTER
+     ════════════════════════════════════════ */
+  .blog-newsletter {
+    padding: 0 clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  .blog-newsletter__container {
+    background: var(--theme-primary);
+    border-radius: 24px;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+  }
+  .blog-newsletter__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--theme-on-primary);
+    margin: 0 0 0.4rem;
+  }
+  .blog-newsletter__text {
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    color: var(--theme-on-primary);
+    opacity: 0.8;
+    margin: 0 0 1.25rem;
+  }
+  .blog-newsletter__form {
+    display: flex;
+    max-width: 440px;
+    margin: 0 auto;
+    gap: 0;
+  }
+  .blog-newsletter__input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-right: 0;
+    border-radius: 999px 0 0 999px;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--theme-on-primary);
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .blog-newsletter__input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .blog-newsletter__input:focus {
+    border-color: var(--theme-surface-1);
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .blog-newsletter__btn {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 0 999px 999px 0;
+    background: var(--theme-surface-1);
+    color: #fff;
+    font-family: var(--theme-font-family-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+  .blog-newsletter__btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  /* ════════════════════════════════════════
      CTA
      ════════════════════════════════════════ */
   .blog-cta {
@@ -447,6 +537,24 @@ const seo = {
       grid-template-columns: 1fr;
       max-width: 560px;
       margin: 0 auto;
+    }
+  }
+  @media (max-width: 480px) {
+    .blog-newsletter__form {
+      flex-wrap: wrap;
+    }
+    .blog-newsletter__input {
+      width: 100%;
+      border-right: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+    }
+    .blog-newsletter__input:focus {
+      border-right-color: var(--theme-surface-1);
+    }
+    .blog-newsletter__btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      border-radius: 999px;
     }
   }
 
